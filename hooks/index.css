@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    /* Light Theme Defaults (used for specific light sections) */
+    --background: 0 0% 98%;
+    --foreground: 232 59% 10%;
+    
+    /* Primary: Elegant Gold #c9a961 */
+    --primary: 42 48% 58%;
+    --primary-foreground: 232 59% 10%;
+    
+    /* Secondary: Deep Black #0a0e27 */
+    --secondary: 232 59% 10%;
+    --secondary-foreground: 42 48% 58%;
+    
+    --accent: 42 48% 58%;
+    --accent-foreground: 232 59% 10%;
+    
+    --muted: 0 0% 92%;
+    --muted-foreground: 232 20% 40%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 232 59% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 232 59% 10%;
+    
+    --border: 42 48% 58%; /* Gold borders */
+    --input: 0 0% 85%;
+    --ring: 42 48% 58%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --radius: 0rem; /* Sharp, geometric edges for premium feel */
+  }
+  
+  .dark {
+    /* Dark Theme Defaults (Main theme for B Engenharia) */
+    --background: 232 59% 10%;
+    --foreground: 0 0% 98%;
+    
+    --primary: 42 48% 58%;
+    --primary-foreground: 232 59% 10%;
+    
+    --secondary: 232 50% 15%;
+    --secondary-foreground: 42 48% 58%;
+    
+    --accent: 42 48% 58%;
+    --accent-foreground: 232 59% 10%;
+    
+    --muted: 232 40% 15%;
+    --muted-foreground: 0 0% 70%;
+    
+    --card: 232 50% 12%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 232 59% 10%;
+    --popover-foreground: 0 0% 98%;
+    
+    --border: 42 48% 58%;
+    --input: 232 40% 20%;
+    --ring: 42 48% 58%;
+  }
+}
+
+@layer components {
+  .heading-font {
+    font-family: "Outfit", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .geometric-line {
+    @apply w-12 h-[2px] bg-primary block;
+  }
+  
+  .geometric-line-vertical {
+    @apply w-[1px] h-12 bg-primary/30 block;
+  }
+}
