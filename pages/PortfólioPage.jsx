@@ -4,37 +4,115 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 
-const PortfólioPage = () => {
+const PortfolioPage = () => {
   const projects = [
     {
-      image: 'https://images.unsplash.com/photo-1586423951975-ba24e359efc0',
-      title: 'EDIFÍCIO RESIDENCIAL JARDIM EUROPA',
-      category: 'Residencial Alto Padrão',
-      description: 'Projeto estrutural completo para edifício residencial com 18 pavimentos, incluindo subsolo e área de lazer.',
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%284%29.jpeg',
+      title: 'ÁREA GOURMET COM LAVANDERIA',
+      category: 'Interiores Residenciais',
+      description: 'Ambiente integrado com revestimentos geométricos, bancada funcional e iluminação indireta.',
     },
     {
-      image: 'https://images.unsplash.com/photo-1645883448890-da2a70d885ae',
-      title: 'CENTRO COMERCIAL VILA MARIANA',
-      category: 'Comercial',
-      description: 'Estrutura em concreto armado para complexo comercial com 4 pavimentos e estacionamento subterrâneo.',
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%283%29.jpeg',
+      title: 'LAVABO CONTEMPORÂNEO',
+      category: 'Banheiro',
+      description: 'Projeto com bancada em pedra natural, espelho iluminado e composição com madeira ripada.',
     },
     {
-      image: 'https://images.unsplash.com/photo-1470973173492-f010cdacd027',
-      title: 'GALPÃO INDUSTRIAL GUARULHOS',
-      category: 'Industrial',
-      description: 'Projeto de estrutura metálica para galpão industrial com vão livre de 32 metros e pé-direito de 12 metros.',
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%282%29.jpeg',
+      title: 'BANHEIRO COM MARCENARIA VERDE',
+      category: 'Banheiro',
+      description: 'Ambiente moderno com cuba esculpida, metais pretos, nichos e box em vidro.',
     },
     {
-      image: 'https://images.unsplash.com/photo-1611129005683-7178fe278943',
-      title: 'RESIDÊNCIA UNIFAMILIAR ALPHAVILLE',
-      category: 'Residencial',
-      description: 'Projeto estrutural para residência de alto padrão com arquitetura contemporânea e balanços estruturais.',
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%281%29.jpeg',
+      title: 'BANHEIRO EM MÁRMORE CLARO',
+      category: 'Banheiro',
+      description: 'Projeto elegante com revestimentos marmorizados, prateleiras iluminadas e espelho com LED.',
     },
     {
-      image: 'https://images.unsplash.com/photo-1613051855981-e75ca9eb5e36',
-      title: 'REFORMA ESTRUTURAL CENTRO',
-      category: 'Reforma',
-      description: 'Reforço estrutural e adequação para mudança de uso de edifício comercial no centro de São Paulo.',
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33.jpeg',
+      title: 'SUÍTE CASAL INTEGRADA',
+      category: 'Dormitório',
+      description: 'Suíte com tons neutros, iluminação aconchegante e integração visual com área de closet.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%285%29.jpeg',
+      title: 'DORMITÓRIO CASAL COM PENDENTES',
+      category: 'Dormitório',
+      description: 'Ambiente compacto e sofisticado com cabeceira estofada, madeira clara e iluminação decorativa.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%284%29.jpeg',
+      title: 'DORMITÓRIO CASAL MINIMALISTA',
+      category: 'Dormitório',
+      description: 'Composição clean com mesas laterais em madeira, iluminação simétrica e tons suaves.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%283%29.jpeg',
+      title: 'DORMITÓRIO INFANTIL PLANEJADO',
+      category: 'Dormitório',
+      description: 'Quarto com marcenaria funcional, painel de estudo, armário planejado e iluminação linear.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%282%29.jpeg',
+      title: 'DORMITÓRIO INFANTIL ROSÉ',
+      category: 'Dormitório',
+      description: 'Ambiente delicado com painel em madeira, parede rosé e composição acolhedora.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%281%29.jpeg',
+      title: 'COZINHA VERDE COM ILHA',
+      category: 'Cozinha',
+      description: 'Cozinha planejada com armários verdes, ilha branca, iluminação linear e acabamento em madeira.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32.jpeg',
+      title: 'COZINHA INTEGRADA COM JANTAR',
+      category: 'Cozinha Integrada',
+      description: 'Projeto de cozinha gourmet integrada à sala de jantar, com ilha, pendentes e marcenaria verde.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.31%20%281%29.jpeg',
+      title: 'SALA DE JANTAR INTEGRADA',
+      category: 'Área Social',
+      description: 'Ambiente social com mesa ampla, parede em tijolinho branco e integração com cozinha gourmet.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.31.jpeg',
+      title: 'HALL COM COBOGÓ',
+      category: 'Área Social',
+      description: 'Circulação com painel verde, cobogó decorativo e vista integrada para cozinha e jantar.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.30%20%281%29.jpeg',
+      title: 'SALA DE ESTAR COM PÉ-DIREITO ALTO',
+      category: 'Sala de Estar',
+      description: 'Sala ampla com painel em madeira, parede vazada, sofá claro e integração com varanda.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.30.jpeg',
+      title: 'GARAGEM MODERNA',
+      category: 'Garagem',
+      description: 'Garagem com iluminação perimetral, parede ripada em madeira e acabamento em concreto.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.29%20%282%29.jpeg',
+      title: 'FACHADA COM VARANDA',
+      category: 'Fachada Residencial',
+      description: 'Fachada contemporânea com garagem, varanda superior e iluminação cênica.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.29%20%281%29.jpeg',
+      title: 'VARANDA RESIDENCIAL',
+      category: 'Fachada Residencial',
+      description: 'Varanda com guarda-corpo em vidro, cadeira suspensa e iluminação decorativa.',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.29.jpeg',
+      title: 'FACHADA RUA ZACARIAS',
+      category: 'Fachada Residencial',
+      description: 'Projeto residencial com fachada urbana, garagem frontal e varanda iluminada.',
     },
   ];
 
@@ -42,14 +120,17 @@ const PortfólioPage = () => {
     <div className="bg-[#0a0e27] min-h-screen">
       <Helmet>
         <title>Projetos | B Engenharia</title>
-        <meta name="description" content="Conheça o portfólio de projetos da B Engenharia." />
+        <meta
+          name="description"
+          content="Conheça o portfólio de projetos da B Engenharia."
+        />
       </Helmet>
 
       <Header />
 
       <main className="pt-32 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-20"
@@ -66,16 +147,20 @@ const PortfólioPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {projects.map((project, index) => (
               <motion.div
-                key={index}
+                key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
                 className={`group relative overflow-hidden border border-primary/20 bg-[#0a0e27] ${
                   index === 0 ? 'md:col-span-2' : ''
                 }`}
               >
-                <div className={`relative overflow-hidden ${index === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'}`}>
+                <div
+                  className={`relative overflow-hidden ${
+                    index === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'
+                  }`}
+                >
                   <div className="absolute inset-0 bg-[#0a0e27]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                   <img
                     src={project.image}
@@ -83,7 +168,7 @@ const PortfólioPage = () => {
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   />
                 </div>
-                
+
                 <div className="p-8 relative z-20 bg-[#0a0e27] border-t border-primary/20">
                   <span className="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">
                     {project.category}
@@ -106,4 +191,4 @@ const PortfólioPage = () => {
   );
 };
 
-export default PortfólioPage;
+export default PortfolioPage;
