@@ -65,7 +65,7 @@ const ContatoPage = () => {
                     </div>
                     <div>
                       <h3 className="text-white font-bold mb-1">Telefone</h3>
-                      <p className="text-white/60 font-light">+55 (11) 99999-9999</p>
+                      <p className="text-white/60 font-light">+55 (11) 98853-5276</p>
                     </div>
                   </div>
                   
@@ -75,7 +75,7 @@ const ContatoPage = () => {
                     </div>
                     <div>
                       <h3 className="text-white font-bold mb-1">E-mail</h3>
-                      <p className="text-white/60 font-light">contato@bengenharia.com.br</p>
+                      <p className="text-white/60 font-light break-all">eng.bernardos@gmail.com</p>
                     </div>
                   </div>
 

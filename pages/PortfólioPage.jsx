@@ -157,7 +157,7 @@ const PortfolioPage = () => {
                 }`}
               >
                 <div
-                  className={`relative overflow-hidden ${
+                  className={`photo-watermark relative overflow-hidden ${
                     index === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'
                   }`}
                 >

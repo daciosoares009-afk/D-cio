@@ -1,0 +1,31 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="220" y1="170" x2="790" y2="780" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8E28A"/>
+      <stop offset="0.32" stop-color="#D59B25"/>
+      <stop offset="0.65" stop-color="#FFE681"/>
+      <stop offset="1" stop-color="#B87513"/>
+    </linearGradient>
+  </defs>
+  <g opacity="0.9">
+    <path d="M456 225H557V362L507 397L456 365V225Z" fill="url(#gold)"/>
+    <path d="M488 273H512V297H488V273Z" fill="currentColor"/>
+    <path d="M526 273H550V297H526V273Z" fill="currentColor"/>
+    <path d="M488 312H512V336H488V312Z" fill="currentColor"/>
+    <path d="M526 312H550V336H526V312Z" fill="currentColor"/>
+    <path d="M566 330L657 389V461L566 404V330Z" fill="url(#gold)"/>
+    <path d="M329 392H462C502 392 534 404 558 428C574 444 582 464 582 488C582 515 572 537 553 554C583 570 599 595 599 630C599 670 585 701 558 723C531 745 494 756 447 756H329V742H362V406H329V392ZM431 420V541H459C487 541 508 536 522 525C536 514 543 498 543 476C543 458 536 444 522 434C508 425 487 420 459 420H431ZM431 570V728H465C497 728 520 721 535 707C550 693 557 672 557 646C557 622 550 603 535 590C520 577 497 570 465 570H431Z" fill="url(#gold)"/>
+    <path d="M442 466L575 381L696 464V507L578 430L442 515V466Z" fill="url(#gold)"/>
+    <path d="M578 442L667 501V756H578V442Z" fill="url(#gold)"/>
+    <path d="M605 548H657V559H605V548Z" fill="currentColor"/>
+    <path d="M605 579H657V590H605V579Z" fill="currentColor"/>
+    <path d="M605 610H657V621H605V610Z" fill="currentColor"/>
+    <path d="M605 641H657V652H605V641Z" fill="currentColor"/>
+    <path d="M424 683H439V698H424V683Z" fill="currentColor"/>
+    <path d="M446 683H461V698H446V683Z" fill="currentColor"/>
+    <path d="M424 706H439V721H424V706Z" fill="currentColor"/>
+    <path d="M446 706H461V721H446V706Z" fill="currentColor"/>
+    <text x="512" y="842" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="78" letter-spacing="10" fill="url(#gold)">ENGENHARIA</text>
+    <text x="512" y="892" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" letter-spacing="10" fill="#FFFFFF">ESTRUTURANDO SONHOS</text>
+  </g>
+</svg>
