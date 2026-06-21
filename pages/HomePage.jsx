@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -7,21 +7,29 @@ import {
   Building2,
   Calculator,
   ClipboardCheck,
+  FileCheck2,
   HardHat,
   Leaf,
   Mail,
   MapPin,
   Medal,
+  MessageCircle,
   Phone,
+  Ruler,
   Search,
+  ShieldCheck,
+  Star,
   Users,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import { completeProjects } from '@/data/completeProjects.js';
 
 const HomePage = () => {
-  const whatsappUrl = 'https://wa.me/5511988535276';
+  const [activeFilter, setActiveFilter] = useState('Todos');
+  const whatsappMessage = encodeURIComponent('Olá, gostaria de solicitar um orçamento para um projeto.');
+  const whatsappUrl = `https://wa.me/5511988535276?text=${whatsappMessage}`;
 
   const services = [
     {
@@ -59,64 +67,133 @@ const HomePage = () => {
   const projects = [
     {
       image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%284%29.jpeg',
-      title: 'ÁREA GOURMET COM LAVANDERIA',
-      category: 'Interiores Residenciais',
+      title: 'AREA GOURMET COM LAVANDERIA',
+      category: 'Interiores',
     },
     {
       image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%283%29.jpeg',
-      title: 'LAVABO CONTEMPORÂNEO',
-      category: 'Banheiro',
+      title: 'LAVABO CONTEMPORANEO',
+      category: 'Banheiros',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%282%29.jpeg',
+      title: 'BANHEIRO COM MARCENARIA VERDE',
+      category: 'Banheiros',
     },
     {
       image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%281%29.jpeg',
       title: 'COZINHA VERDE COM ILHA',
-      category: 'Cozinha',
+      category: 'Cozinhas',
     },
     {
       image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32.jpeg',
       title: 'COZINHA INTEGRADA COM JANTAR',
-      category: 'Cozinha Integrada',
+      category: 'Cozinhas',
+    },
+    {
+      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%285%29.jpeg',
+      title: 'DORMITORIO CASAL COM PENDENTES',
+      category: 'Dormitorios',
     },
     {
       image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.30%20%281%29.jpeg',
-      title: 'SALA DE ESTAR COM PÉ-DIREITO ALTO',
-      category: 'Sala de Estar',
+      title: 'SALA DE ESTAR COM PE-DIREITO ALTO',
+      category: 'Interiores',
     },
     {
       image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.29.jpeg',
       title: 'FACHADA RUA ZACARIAS',
-      category: 'Fachada Residencial',
+      category: 'Fachadas',
+    },
+    {
+      image: '/projetos/interiores-residenciais-imagem-06.jpeg',
+      title: 'SUITE COM ILUMINACAO SUAVE',
+      category: 'Dormitorios',
+    },
+    {
+      image: '/projetos/interiores-residenciais-imagem-11.jpeg',
+      title: 'COZINHA VERDE INTEGRADA',
+      category: 'Cozinhas',
+    },
+    {
+      image: '/projetos/interiores-residenciais-imagem-16.jpeg',
+      title: 'FACHADA RESIDENCIAL NOTURNA',
+      category: 'Fachadas',
     },
   ];
 
-  const differentials = [
+  const filters = ['Todos', 'Interiores', 'Banheiros', 'Cozinhas', 'Dormitorios', 'Fachadas'];
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === 'Todos') {
+      return projects;
+    }
+
+    return projects.filter((project) => project.category === activeFilter);
+  }, [activeFilter, projects]);
+
+  const steps = [
     {
-      icon: Building2,
-      title: '+50 PROJETOS ENTREGUES',
-      subtitle: 'com excelência',
+      title: 'Briefing',
+      description: 'Entendemos o objetivo, medidas, estilo, prazo e fase atual do projeto.',
     },
     {
-      icon: Users,
-      title: '100% COMPROMISSO COM O CLIENTE',
-      subtitle: 'do início ao fim',
+      title: 'Análise técnica',
+      description: 'Avaliamos viabilidade, estrutura, materiais, normas e melhores soluções.',
     },
     {
-      icon: HardHat,
-      title: 'QUALIDADE E SEGURANÇA',
-      subtitle: 'em cada etapa da obra',
+      title: 'Proposta',
+      description: 'Apresentamos escopo, cronograma, investimento e próximos passos.',
     },
     {
-      icon: Medal,
-      title: 'CONFIANÇA E TRANSPARÊNCIA',
-      subtitle: 'valores que guiam cada decisão',
+      title: 'Execução e acompanhamento',
+      description: 'Seguimos com projeto, documentação e suporte até a entrega planejada.',
+    },
+  ];
+
+  const technicalProof = [
+    {
+      icon: ShieldCheck,
+      title: 'Responsabilidade técnica',
+      description: 'Projetos conduzidos com critério técnico, segurança e atenção às normas.',
+    },
+    {
+      icon: FileCheck2,
+      title: 'Documentação clara',
+      description: 'Entregáveis organizados para facilitar obra, aprovação e tomada de decisão.',
+    },
+    {
+      icon: Ruler,
+      title: 'Compatibilização',
+      description: 'Olhar integrado entre estrutura, arquitetura, interiores e execução.',
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: 'Cliente residencial',
+      text: 'O atendimento foi claro desde o primeiro contato. O projeto ficou funcional, bonito e muito bem explicado.',
+    },
+    {
+      name: 'Reforma de interiores',
+      text: 'A equipe conseguiu transformar as ideias em soluções práticas, com cuidado nos detalhes e no orçamento.',
+    },
+    {
+      name: 'Projeto completo',
+      text: 'Gostei da transparência em cada etapa. Passou confiança e ajudou muito na tomada de decisões.',
     },
   ];
 
   return (
     <div className="bg-[#0a0e27] min-h-screen">
       <Helmet>
-        <title>B Engenharia | Transformando Ideias em Realidade</title>
-        <meta name="description" content="Soluções inteligentes e inovadoras em engenharia para construir um futuro melhor." />
+        <title>B Engenharia | Projetos Estruturais, Reformas e Interiores em São Paulo</title>
+        <meta
+          name="description"
+          content="B Engenharia: projetos estruturais, reformas, interiores, consultoria técnica e orçamentos em São Paulo. Solicite seu orçamento pelo WhatsApp."
+        />
+        <meta property="og:title" content="B Engenharia | Estruturando sonhos" />
+        <meta property="og:description" content="Soluções em engenharia, interiores, reformas e projetos estruturais." />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />
@@ -144,14 +221,22 @@ const HomePage = () => {
                 ENGENHARIA QUE TRANSFORMA IDEIAS EM <span className="text-primary">REALIDADE.</span>
               </h1>
               <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl font-light leading-relaxed">
-                Soluções inteligentes e inovadoras em engenharia para construir um futuro melhor.
+                Soluções inteligentes em engenharia, interiores e reformas para construir com segurança, estética e planejamento.
               </p>
-              <Button asChild size="lg" className="bg-primary text-[#0a0e27] hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
-                <Link to="/#portfolio" className="flex items-center gap-3">
-                  CONHEÇA NOSSOS PROJETOS
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg" className="bg-primary text-[#0a0e27] hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                    SOLICITAR ORÇAMENTO
+                    <MessageCircle className="w-5 h-5" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-[#0a0e27] heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
+                  <Link to="/#portfolio" className="flex items-center gap-3">
+                    VER PROJETOS
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -219,9 +304,30 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="portfolio" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
+        <section id="como-funciona" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
+            <div className="mb-16 max-w-3xl">
+              <div className="geometric-line mb-6" />
+              <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">COMO FUNCIONA</h2>
+              <p className="text-gray-600 text-lg font-light">
+                Um processo objetivo para sair da ideia e chegar em uma proposta técnica clara.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {steps.map((step, index) => (
+                <div key={step.title} className="border border-primary/30 p-7">
+                  <span className="heading-font text-primary text-sm font-bold">0{index + 1}</span>
+                  <h3 className="heading-font text-xl font-bold mt-4 mb-4">{step.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="portfolio" className="py-24 bg-[#f7f7f7] text-[#0a0e27] scroll-mt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
               <div className="geometric-line mx-auto mb-6" />
               <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">NOSSOS PROJETOS</h2>
               <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">
@@ -229,8 +335,25 @@ const HomePage = () => {
               </p>
             </div>
 
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`heading-font border px-5 py-3 text-xs font-bold transition-colors ${
+                    activeFilter === filter
+                      ? 'border-primary bg-primary text-[#0a0e27]'
+                      : 'border-primary/40 text-[#0a0e27] hover:bg-primary hover:text-[#0a0e27]'
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
+              {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.title}
                   initial={{ opacity: 0, y: 30 }}
@@ -243,7 +366,7 @@ const HomePage = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                     />
                   </div>
                   <div className="p-6 bg-[#0a0e27] border-t border-primary/20">
@@ -251,6 +374,125 @@ const HomePage = () => {
                     <h3 className="heading-font text-lg font-bold text-white">{project.title}</h3>
                   </div>
                 </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="projetos-completos" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="geometric-line mx-auto mb-6" />
+              <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                PROJETOS COM PLANTA
+              </h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">
+                Cada casa tem sua planta baixa como entrada. Ao abrir, você vê a planta, imagens principais e o PDF completo.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {completeProjects.map((project) => (
+                <Link
+                  key={project.slug}
+                  to={`/projetos/${project.slug}`}
+                  className="group border border-primary/20 bg-[#0a0e27] overflow-hidden transition-all duration-300 hover:border-primary"
+                >
+                  <div className="photo-watermark relative aspect-[16/10] overflow-hidden bg-white">
+                    <img
+                      src={project.plan}
+                      alt={`${project.coverLabel || 'Planta baixa'} - ${project.title}`}
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-7 border-t border-primary/20">
+                    <span className="text-primary heading-font text-xs font-bold tracking-widest">{project.location}</span>
+                    <h3 className="heading-font text-2xl font-bold text-white mt-3 mb-3">{project.title}</h3>
+                    <p className="text-white/60 text-sm leading-relaxed mb-5">{project.description}</p>
+                    <span className="inline-flex items-center gap-2 text-primary heading-font text-sm font-bold">
+                      ABRIR PLANTA E IMAGENS
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="bastidores" className="py-24 bg-[#0a0e27] text-white border-y border-primary/20 scroll-mt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+              <div>
+                <div className="geometric-line mb-6" />
+                <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">BASTIDORES E EVOLUÇÃO</h2>
+                <p className="text-white/70 text-lg font-light leading-relaxed mb-8">
+                  Mostramos etapas de estudo, projeto, compatibilização e resultado para que o cliente acompanhe o raciocínio por trás de cada escolha.
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="border border-primary/20 p-5">
+                    <span className="heading-font text-primary text-sm font-bold">ANTES</span>
+                    <p className="text-white/60 text-sm mt-2">Levantamento, necessidades e restrições.</p>
+                  </div>
+                  <div className="border border-primary/20 p-5">
+                    <span className="heading-font text-primary text-sm font-bold">DEPOIS</span>
+                    <p className="text-white/60 text-sm mt-2">Solução visual, técnica e funcional.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="photo-watermark relative aspect-[3/4] overflow-hidden border border-primary/20">
+                  <img src="/img/WhatsApp%20Image%202026-04-03%20at%2022.44.31.jpeg" alt="Bastidor do projeto" className="w-full h-full object-cover" />
+                </div>
+                <div className="photo-watermark relative aspect-[3/4] overflow-hidden border border-primary/20 mt-10">
+                  <img src="/img/WhatsApp%20Image%202026-04-03%20at%2022.44.29%20%282%29.jpeg" alt="Resultado de projeto" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="prova-tecnica" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="geometric-line mx-auto mb-6" />
+              <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">PROVA TÉCNICA</h2>
+              <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">
+                Engenharia com método, clareza documental e responsabilidade em cada entrega.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {technicalProof.map((item) => (
+                <div key={item.title} className="border-t-4 border-primary bg-white p-8 shadow-sm">
+                  <item.icon className="w-10 h-10 text-primary mb-6" strokeWidth={1.4} />
+                  <h3 className="heading-font text-xl font-bold mb-4">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="depoimentos" className="py-24 bg-[#0a0e27] text-white border-y border-primary/20 scroll-mt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="geometric-line mx-auto mb-6" />
+              <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">DEPOIMENTOS</h2>
+              <p className="text-white/70 text-lg max-w-2xl mx-auto font-light">
+                Confiança também se constrói com comunicação clara e entrega consistente.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial) => (
+                <div key={testimonial.name} className="border border-primary/20 p-8">
+                  <div className="flex gap-1 text-primary mb-6">
+                    {[...Array(5)].map((_, index) => (
+                      <Star key={index} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-white/70 font-light leading-relaxed mb-6">“{testimonial.text}”</p>
+                  <h3 className="heading-font text-primary text-sm font-bold">{testimonial.name}</h3>
+                </div>
               ))}
             </div>
           </div>
@@ -264,7 +506,12 @@ const HomePage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x divide-primary/20">
-              {differentials.map((item, index) => (
+              {[
+                { icon: Building2, title: '+50 PROJETOS ENTREGUES', subtitle: 'com excelência' },
+                { icon: Users, title: '100% COMPROMISSO COM O CLIENTE', subtitle: 'do início ao fim' },
+                { icon: HardHat, title: 'QUALIDADE E SEGURANÇA', subtitle: 'em cada etapa da obra' },
+                { icon: Medal, title: 'CONFIANÇA E TRANSPARÊNCIA', subtitle: 'valores que guiam cada decisão' },
+              ].map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 20 }}
@@ -311,7 +558,7 @@ const HomePage = () => {
 
                 <Button asChild className="w-full sm:w-auto bg-[#0a0e27] text-white hover:bg-primary hover:text-[#0a0e27] heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    CHAMAR NO WHATSAPP
+                    SOLICITAR ORÇAMENTO
                   </a>
                 </Button>
               </div>
@@ -319,7 +566,7 @@ const HomePage = () => {
               <div className="border border-primary/30 p-8 md:p-10 bg-[#0a0e27] text-white">
                 <h3 className="heading-font text-2xl font-bold mb-6">COMECE SEU PROJETO</h3>
                 <p className="text-white/70 font-light leading-relaxed mb-8">
-                  Envie uma mensagem pelo WhatsApp contando o tipo de obra, localização e fase atual do projeto. A equipe retorna com os próximos passos.
+                  Ao clicar no WhatsApp, a mensagem já vai pronta para iniciar o pedido de orçamento. Conte o tipo de obra, localização e fase atual do projeto.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   <div className="border border-primary/20 p-5">

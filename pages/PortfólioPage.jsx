@@ -161,11 +161,10 @@ const PortfolioPage = () => {
                     index === 0 ? 'aspect-[21/9]' : 'aspect-[4/3]'
                   }`}
                 >
-                  <div className="absolute inset-0 bg-[#0a0e27]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                   />
                 </div>
 

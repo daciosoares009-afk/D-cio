@@ -17,13 +17,13 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 40;
+  z-index: 5;
   pointer-events: none;
   background-image: url("/img/logo-watermark.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: min(78vw, 760px);
-  opacity: 0.035;
+  background-size: min(68vw, 620px);
+  opacity: 0.018;
 }
 
 @layer base {
@@ -111,14 +111,14 @@ body::before {
     right: clamp(1rem, 3vw, 2rem);
     bottom: clamp(1rem, 3vw, 2rem);
     z-index: 30;
-    width: clamp(96px, 22%, 180px);
+    width: clamp(58px, 12%, 110px);
     aspect-ratio: 1;
     pointer-events: none;
     background-image: url("/img/logo-watermark.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    opacity: 0.22;
-    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+    opacity: 0.14;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
   }
 }

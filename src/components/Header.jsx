@@ -8,7 +8,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const whatsappUrl = 'https://wa.me/5511988535276';
+  const whatsappUrl = 'https://wa.me/5511988535276?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20projeto.';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,11 +94,7 @@ const Header = () => {
                 aria-label="Falar no WhatsApp"
                 className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-300 hover:scale-105"
               >
-                <img
-                  src="/img/whatsapp.svg"
-                  alt=""
-                  className="h-10 w-10"
-                />
+                <img src="/img/whatsapp.svg" alt="" className="h-10 w-10" />
               </a>
             </nav>
 
@@ -146,11 +142,7 @@ const Header = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="heading-font flex items-center gap-2 text-sm font-semibold text-primary"
               >
-                <img
-                  src="/img/whatsapp.svg"
-                  alt=""
-                  className="h-5 w-5"
-                />
+                <img src="/img/whatsapp.svg" alt="" className="h-5 w-5" />
                 WHATSAPP
               </a>
             </nav>
@@ -165,11 +157,7 @@ const Header = () => {
         aria-label="Falar no WhatsApp"
         className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full shadow-lg shadow-black/30 transition-transform duration-300 hover:scale-105"
       >
-        <img
-          src="/img/whatsapp.svg"
-          alt=""
-          className="h-16 w-16"
-        />
+        <img src="/img/whatsapp.svg" alt="" className="h-16 w-16" />
       </a>
     </>
   );
