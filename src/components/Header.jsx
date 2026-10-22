@@ -8,7 +8,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const whatsappUrl = 'https://wa.me/5511988535276?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20projeto.';
+  const whatsappUrl = 'https://api.whatsapp.com/send?phone=5511988535276&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20projeto.';
 
   useEffect(() => {
     const handleScroll = () => {
