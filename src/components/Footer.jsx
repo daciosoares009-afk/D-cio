@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
 const Footer = () => {
-  const instagramUrl = 'https://www.instagram.com/b.engenhariaaa?igsh=MXBjanptZnIwNHF5Zw==';
+  const instagramUrl = 'https://www.instagram.com/b.engenhariaaaigsh=MXBjanptZnIwNHF5Zw==';
   const linkedinUrl = 'https://www.linkedin.com/';
-  const whatsappUrl = 'https://wa.me/5511988535276';
+  const whatsappUrl = getWhatsAppUrl();
 
   return (
-    <footer className="bg-[#0a0e27] text-white border-t border-primary/20 pt-20 pb-10">
+    <footer className="bg-[#000000] text-white border-t border-primary/20 pt-14 md:pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12 md:mb-16">
+          <div className="sm:col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <span className="heading-font text-3xl font-bold text-white tracking-widest">
+              <span className="heading-font text-2xl sm:text-3xl font-bold text-white tracking-widest">
                 B ENGENHARIA
               </span>
             </Link>
@@ -60,7 +61,7 @@ const Footer = () => {
               <Link to="/" className="text-white/70 hover:text-primary transition-colors text-sm">Início</Link>
               <Link to="/#sobre" className="text-white/70 hover:text-primary transition-colors text-sm">Sobre Nós</Link>
               <Link to="/#servicos" className="text-white/70 hover:text-primary transition-colors text-sm">Serviços</Link>
-              <Link to="/#portfolio" className="text-white/70 hover:text-primary transition-colors text-sm">Projetos</Link>
+              <Link to="/#projetos-completos" className="text-white/70 hover:text-primary transition-colors text-sm">Projetos</Link>
               <Link to="/#diferenciais" className="text-white/70 hover:text-primary transition-colors text-sm">Diferenciais</Link>
               <Link to="/#contato" className="text-white/70 hover:text-primary transition-colors text-sm">Contato</Link>
             </nav>
@@ -76,12 +77,12 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/50 text-sm">
+        <div className="border-t border-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <p className="text-white/50 text-sm break-words">
             © 2026 B Engenharia. Todos os direitos reservados.
           </p>
 
-          <div className="flex gap-6 text-sm text-white/50">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-white/50">
             <Link to="#" className="hover:text-primary transition-colors">Política de Privacidade</Link>
             <Link to="#" className="hover:text-primary transition-colors">Termos de Uso</Link>
           </div>

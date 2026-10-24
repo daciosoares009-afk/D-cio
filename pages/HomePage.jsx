@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -25,12 +25,54 @@ import { Button } from '@/components/ui/button';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { completeProjects } from '@/data/completeProjects.js';
+import { createFeedback, feedbackStoreMode, listFeedbacks } from '@/lib/feedbackStore.js';
+import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
 const HomePage = () => {
-  const [activeFilter, setActiveFilter] = useState('Todos');
-  const whatsappMessage = encodeURIComponent('Olá, gostaria de solicitar um orçamento para um projeto.');
-  const whatsappUrl = `https://wa.me/5511988535276?text=${whatsappMessage}`;
+  const [feedbackName, setFeedbackName] = useState('');
+  const [feedbackText, setFeedbackText] = useState('');
+  const [feedbackRating, setFeedbackRating] = useState(5);
+  const [siteFeedbacks, setSiteFeedbacks] = useState([]);
+  const [feedbackStatus, setFeedbackStatus] = useState('');
+  const whatsappUrl = getWhatsAppUrl();
+  useEffect(() => {
+    const loadFeedbacks = async () => {
+      try {
+        setSiteFeedbacks(await listFeedbacks());
+      } catch (error) {
+        setFeedbackStatus('Nao foi possivel carregar os feedbacks agora.');
+      }
+    };
 
+    loadFeedbacks();
+  }, []);
+  const handleFeedbackSubmit = async (event) => {
+    event.preventDefault();
+
+    const name = feedbackName.trim() || 'Cliente';
+    const text = feedbackText.trim();
+
+    if (!text) {
+      setFeedbackStatus('Escreva seu feedback antes de publicar.');
+      return;
+    }
+
+    try {
+      const newFeedback = await createFeedback({
+        name,
+        text,
+        rating: Number(feedbackRating),
+      });
+
+      setSiteFeedbacks((currentFeedbacks) => [newFeedback, ...currentFeedbacks].slice(0, 20));
+      setFeedbackName('');
+      setFeedbackText('');
+      setFeedbackRating(5);
+      setFeedbackStatus(feedbackStoreMode === 'supabase' ? 'Feedback publicado no site.' : 'Feedback publicado neste navegador.');
+    } catch (error) {
+      setFeedbackStatus('Nao foi possivel publicar agora. Tente novamente.');
+    }
+  };
   const services = [
     {
       icon: Building2,
@@ -62,76 +104,7 @@ const HomePage = () => {
       title: 'PROJETOS SUSTENTÁVEIS',
       description: 'Soluções com foco em eficiência, menor impacto ambiental e melhor uso dos recursos.',
     },
-  ];
-
-  const projects = [
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%284%29.jpeg',
-      title: 'AREA GOURMET COM LAVANDERIA',
-      category: 'Interiores',
-    },
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%283%29.jpeg',
-      title: 'LAVABO CONTEMPORANEO',
-      category: 'Banheiros',
-    },
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.33%20%282%29.jpeg',
-      title: 'BANHEIRO COM MARCENARIA VERDE',
-      category: 'Banheiros',
-    },
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%281%29.jpeg',
-      title: 'COZINHA VERDE COM ILHA',
-      category: 'Cozinhas',
-    },
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32.jpeg',
-      title: 'COZINHA INTEGRADA COM JANTAR',
-      category: 'Cozinhas',
-    },
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.32%20%285%29.jpeg',
-      title: 'DORMITORIO CASAL COM PENDENTES',
-      category: 'Dormitorios',
-    },
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.30%20%281%29.jpeg',
-      title: 'SALA DE ESTAR COM PE-DIREITO ALTO',
-      category: 'Interiores',
-    },
-    {
-      image: '/img/WhatsApp%20Image%202026-04-03%20at%2022.44.29.jpeg',
-      title: 'FACHADA RUA ZACARIAS',
-      category: 'Fachadas',
-    },
-    {
-      image: '/projetos/interiores-residenciais-imagem-06.jpeg',
-      title: 'SUITE COM ILUMINACAO SUAVE',
-      category: 'Dormitorios',
-    },
-    {
-      image: '/projetos/interiores-residenciais-imagem-11.jpeg',
-      title: 'COZINHA VERDE INTEGRADA',
-      category: 'Cozinhas',
-    },
-    {
-      image: '/projetos/interiores-residenciais-imagem-16.jpeg',
-      title: 'FACHADA RESIDENCIAL NOTURNA',
-      category: 'Fachadas',
-    },
-  ];
-
-  const filters = ['Todos', 'Interiores', 'Banheiros', 'Cozinhas', 'Dormitorios', 'Fachadas'];
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === 'Todos') {
-      return projects;
-    }
-
-    return projects.filter((project) => project.category === activeFilter);
-  }, [activeFilter, projects]);
-
-  const steps = [
+  ];  const steps = [
     {
       title: 'Briefing',
       description: 'Entendemos o objetivo, medidas, estilo, prazo e fase atual do projeto.',
@@ -184,7 +157,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-[#0a0e27] min-h-screen">
+    <div className="bg-[#000000] min-h-screen">
       <Helmet>
         <title>B Engenharia | Projetos Estruturais, Reformas e Interiores em São Paulo</title>
         <meta
@@ -198,7 +171,7 @@ const HomePage = () => {
 
       <Header />
 
-      <main>
+      <main className="w-full overflow-hidden">
         <section id="inicio" className="relative min-h-[100dvh] flex items-center pt-24 scroll-mt-28">
           <div className="absolute inset-0 z-0">
             <img
@@ -206,7 +179,7 @@ const HomePage = () => {
               alt="Arquitetura moderna"
               className="w-full h-full object-cover opacity-30"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0e27] via-[#0a0e27]/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/90 to-black/40" />
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -217,21 +190,21 @@ const HomePage = () => {
               className="max-w-3xl"
             >
               <div className="geometric-line mb-8" />
-              <h1 className="heading-font text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1]">
+              <h1 className="heading-font text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-[1.08]">
                 ENGENHARIA QUE TRANSFORMA IDEIAS EM <span className="text-primary">REALIDADE.</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl font-light leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-10 max-w-2xl font-light leading-relaxed">
                 Soluções inteligentes em engenharia, interiores e reformas para construir com segurança, estética e planejamento.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-primary text-[#0a0e27] hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                <Button asChild size="lg" className="w-full sm:w-auto bg-primary text-black hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-6 sm:px-8 py-6 h-auto">
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
                     SOLICITAR ORÇAMENTO
                     <MessageCircle className="w-5 h-5" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-[#0a0e27] heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
-                  <Link to="/#portfolio" className="flex items-center gap-3">
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-6 sm:px-8 py-6 h-auto">
+                  <Link to="/#projetos-completos" className="flex items-center justify-center gap-3">
                     VER PROJETOS
                     <ArrowRight className="w-5 h-5" />
                   </Link>
@@ -241,17 +214,17 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="sobre" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
+        <section id="sobre" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                 <h2 className="heading-font text-primary text-sm font-bold tracking-widest mb-4">QUEM NÓS SOMOS</h2>
                 <h3 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-8 leading-tight">
                   MAIS QUE ENGENHARIA, CONSTRUÍMOS CONFIANÇA.
                 </h3>
-                <div className="space-y-6 text-gray-600 font-light leading-relaxed mb-10">
+                <div className="space-y-6 text-white/70 font-light leading-relaxed mb-10">
                   <p>
-                    Olá, você que está chegando, seja muito bem-vindo à nossa página. Me chamo Bernardo Sousa, sou Engenheiro Civil e fundador da B Engenharia.
+                    Olá, você que está chegando, seja muito bem-vindo à nossa página. Somos a B Engenharia, uma equipe dedicada a transformar ideias em projetos seguros, funcionais e bem planejados.
                   </p>
                   <p>
                     Nossa missão é oferecer soluções com qualidade, responsabilidade e profissionalismo, atuando em diferentes áreas da engenharia e construção civil.
@@ -264,19 +237,21 @@ const HomePage = () => {
 
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
                 <div className="absolute -inset-4 border border-primary/30 translate-x-4 translate-y-4 z-0" />
-                <img
-                  src="https://horizons-cdn.hostinger.com/5e5ebf47-2c25-4e9e-89f6-ba1d6f4256f9/b5db6e2e1a830e6dc2ccc89bd741cfc4.png"
-                  alt="Bernardo Sousa - Fundador da B Engenharia"
-                  className="relative z-10 w-full h-[560px] object-cover"
-                />
+                <div className="relative z-10 flex h-[320px] sm:h-[420px] lg:h-[560px] items-center justify-center bg-[#000000] p-8 sm:p-12">
+                  <img
+                    src="/img/logo.svg"
+                    alt="Logo B Engenharia"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        <section id="servicos" className="py-24 bg-[#0a0e27] border-y border-primary/20 scroll-mt-28">
+        <section id="servicos" className="py-16 md:py-24 bg-[#000000] border-y border-primary/20 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 md:mb-20">
               <div className="geometric-line mx-auto mb-6" />
               <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">NOSSOS SERVIÇOS</h2>
               <p className="text-white/70 text-lg max-w-2xl mx-auto font-light">
@@ -292,7 +267,7 @@ const HomePage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.06 }}
-                  className="border border-primary/20 p-8 bg-[#0a0e27] hover:border-primary transition-all duration-500 group"
+                  className="border border-primary/20 p-8 bg-[#000000] hover:border-primary transition-all duration-500 group"
                 >
                   <service.icon className="w-10 h-10 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />
                   <h3 className="heading-font text-xl font-bold text-white mb-4">{service.title}</h3>
@@ -304,12 +279,12 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="como-funciona" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
+        <section id="como-funciona" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-16 max-w-3xl">
+            <div className="mb-10 md:mb-16 max-w-3xl">
               <div className="geometric-line mb-6" />
               <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">COMO FUNCIONA</h2>
-              <p className="text-gray-600 text-lg font-light">
+              <p className="text-white/70 text-lg font-light">
                 Um processo objetivo para sair da ideia e chegar em uma proposta técnica clara.
               </p>
             </div>
@@ -318,90 +293,36 @@ const HomePage = () => {
                 <div key={step.title} className="border border-primary/30 p-7">
                   <span className="heading-font text-primary text-sm font-bold">0{index + 1}</span>
                   <h3 className="heading-font text-xl font-bold mt-4 mb-4">{step.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                  <p className="text-white/70 text-sm leading-relaxed">{step.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="portfolio" className="py-24 bg-[#f7f7f7] text-[#0a0e27] scroll-mt-28">
+        <section id="projetos-completos" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <div className="geometric-line mx-auto mb-6" />
-              <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">NOSSOS PROJETOS</h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">
-                Obras que demonstram nossa capacidade técnica e compromisso com a excelência.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              {filters.map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  onClick={() => setActiveFilter(filter)}
-                  className={`heading-font border px-5 py-3 text-xs font-bold transition-colors ${
-                    activeFilter === filter
-                      ? 'border-primary bg-primary text-[#0a0e27]'
-                      : 'border-primary/40 text-[#0a0e27] hover:bg-primary hover:text-[#0a0e27]'
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.06 }}
-                  className="group overflow-hidden border border-primary/20 bg-[#0a0e27]"
-                >
-                  <div className="photo-watermark relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6 bg-[#0a0e27] border-t border-primary/20">
-                    <span className="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">{project.category}</span>
-                    <h3 className="heading-font text-lg font-bold text-white">{project.title}</h3>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="projetos-completos" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-16">
               <div className="geometric-line mx-auto mb-6" />
               <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
                 PROJETOS COM PLANTA
               </h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">
-                Cada casa tem sua planta baixa como entrada. Ao abrir, você vê a planta, imagens principais e o PDF completo.
+              <p className="text-white/70 text-lg max-w-2xl mx-auto font-light">
+                As plantas ficam separadas das fotos para facilitar a visualizacao de cada projeto.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {completeProjects.map((project) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-14 md:mb-20">
+              {completeProjects.filter((project) => project.plans.length > 0).map((project) => (
                 <Link
                   key={project.slug}
                   to={`/projetos/${project.slug}`}
-                  className="group border border-primary/20 bg-[#0a0e27] overflow-hidden transition-all duration-300 hover:border-primary"
+                  className="group border border-primary/25 bg-[#080808] overflow-hidden transition-all duration-300 hover:border-primary"
                 >
-                  <div className="photo-watermark relative aspect-[16/10] overflow-hidden bg-white">
+                  <div className="photo-watermark relative aspect-[16/10] overflow-hidden bg-[#050505]">
                     <img
-                      src={project.plan}
-                      alt={`${project.coverLabel || 'Planta baixa'} - ${project.title}`}
+                      src={project.cover}
+                      alt={`${project.coverLabel} - ${project.title}`}
                       className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
@@ -410,7 +331,7 @@ const HomePage = () => {
                     <h3 className="heading-font text-2xl font-bold text-white mt-3 mb-3">{project.title}</h3>
                     <p className="text-white/60 text-sm leading-relaxed mb-5">{project.description}</p>
                     <span className="inline-flex items-center gap-2 text-primary heading-font text-sm font-bold">
-                      ABRIR PLANTA E IMAGENS
+                      VER PLANTA E FOTOS
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>
@@ -420,9 +341,9 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="bastidores" className="py-24 bg-[#0a0e27] text-white border-y border-primary/20 scroll-mt-28">
+        <section id="bastidores" className="py-16 md:py-24 bg-[#000000] text-white border-y border-primary/20 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div>
                 <div className="geometric-line mb-6" />
                 <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">BASTIDORES E EVOLUÇÃO</h2>
@@ -452,30 +373,30 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="prova-tecnica" className="py-24 bg-white text-[#0a0e27] scroll-mt-28">
+        <section id="prova-tecnica" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-16">
               <div className="geometric-line mx-auto mb-6" />
               <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">PROVA TÉCNICA</h2>
-              <p className="text-gray-600 text-lg max-w-2xl mx-auto font-light">
+              <p className="text-white/70 text-lg max-w-2xl mx-auto font-light">
                 Engenharia com método, clareza documental e responsabilidade em cada entrega.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {technicalProof.map((item) => (
-                <div key={item.title} className="border-t-4 border-primary bg-white p-8 shadow-sm">
+                <div key={item.title} className="border-t-4 border-primary bg-[#101010] p-8 shadow-sm">
                   <item.icon className="w-10 h-10 text-primary mb-6" strokeWidth={1.4} />
                   <h3 className="heading-font text-xl font-bold mb-4">{item.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                  <p className="text-white/70 text-sm leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="depoimentos" className="py-24 bg-[#0a0e27] text-white border-y border-primary/20 scroll-mt-28">
+        <section id="depoimentos" className="py-16 md:py-24 bg-[#000000] text-white border-y border-primary/20 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10 md:mb-16">
               <div className="geometric-line mx-auto mb-6" />
               <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6">DEPOIMENTOS</h2>
               <p className="text-white/70 text-lg max-w-2xl mx-auto font-light">
@@ -498,9 +419,115 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="diferenciais" className="py-24 bg-[#0a0e27] border-y border-primary/20 scroll-mt-28">
+        <section id="feedback" className="py-20 md:py-24 bg-[#050505] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
+              <div>
+                <div className="geometric-line mb-6" />
+                <span className="text-primary heading-font text-sm font-bold tracking-widest">SUA OPINIAO</span>
+                <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6 leading-tight">
+                  DEIXE SEU FEEDBACK
+                </h2>
+                <p className="text-white/70 text-base sm:text-lg font-light leading-relaxed max-w-xl">
+                  Escreva seu nome, escolha uma avaliacao de 0 a 5 estrelas e publique seu feedback direto no site.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                <form onSubmit={handleFeedbackSubmit} className="border border-primary/25 bg-[#000000] p-5 sm:p-8 md:p-10 shadow-[0_24px_60px_rgba(201,169,97,0.10)]">
+                  <div className="grid grid-cols-1 gap-5">
+                    <label className="block">
+                      <span className="heading-font text-primary text-xs font-bold tracking-widest mb-3 block">NOME</span>
+                      <input
+                        type="text"
+                        value={feedbackName}
+                        onChange={(event) => setFeedbackName(event.target.value)}
+                        placeholder="Seu nome"
+                        className="w-full border border-primary/25 bg-[#101010] px-4 py-4 text-white outline-none transition-colors placeholder:text-white/40 focus:border-primary"
+                      />
+                    </label>
+
+                    <div>
+                      <span className="heading-font text-primary text-xs font-bold tracking-widest mb-3 block">AVALIACAO</span>
+                      <div className="flex flex-wrap items-center gap-3">
+                        {[0, 1, 2, 3, 4, 5].map((rating) => (
+                          <button
+                            key={rating}
+                            type="button"
+                            onClick={() => setFeedbackRating(rating)}
+                            className={`flex h-11 min-w-11 items-center justify-center border px-3 heading-font text-sm font-bold transition-colors ${
+                              feedbackRating === rating
+                                ?
+                                'border-primary bg-primary text-black'
+                                : 'border-primary/30 text-white hover:border-primary hover:text-primary'
+                            }`}
+                            aria-label={`Avaliar com ${rating} estrelas`}
+                          >
+                            {rating}
+                          </button>
+                        ))}
+                        <div className="flex items-center gap-1 text-primary" aria-label={`${feedbackRating} de 5 estrelas`}>
+                          {[...Array(5)].map((_, index) => (
+                            <Star
+                              key={index}
+                              className={`w-5 h-5 ${index < feedbackRating ? 'fill-current' : 'opacity-30'}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <label className="block">
+                      <span className="heading-font text-primary text-xs font-bold tracking-widest mb-3 block">FEEDBACK</span>
+                      <textarea
+                        value={feedbackText}
+                        onChange={(event) => setFeedbackText(event.target.value)}
+                        placeholder="Escreva seu feedback aqui"
+                        rows={6}
+                        className="w-full resize-none border border-primary/25 bg-[#101010] px-4 py-4 text-white outline-none transition-colors placeholder:text-white/40 focus:border-primary"
+                      />
+                    </label>
+
+                    <Button type="submit" className="w-full sm:w-auto bg-primary text-black hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
+                      PUBLICAR AVALIACAO
+                    </Button>
+
+                    {feedbackStatus && (
+                      <p className="text-sm text-white/70">{feedbackStatus}</p>
+                    )}
+                  </div>
+                </form>
+
+                {siteFeedbacks.length > 0 && (
+                  <div className="grid grid-cols-1 gap-4">
+                    {siteFeedbacks.map((feedback) => (
+                      <div key={feedback.id} className="border border-primary/25 bg-[#101010] p-5 shadow-sm">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
+                          <div>
+                            <h3 className="heading-font text-white text-lg font-bold">{feedback.name}</h3>
+                            <span className="text-white/50 text-sm">{feedback.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-primary" aria-label={`${feedback.rating} de 5 estrelas`}>
+                            {[...Array(5)].map((_, index) => (
+                              <Star
+                                key={index}
+                                className={`w-4 h-4 ${index < feedback.rating ? 'fill-current' : 'opacity-30'}`}
+                              />
+                            ))}
+                            <span className="ml-2 heading-font text-xs font-bold text-white">{feedback.rating}/5</span>
+                          </div>
+                        </div>
+                        <p className="text-white/70 leading-relaxed">{feedback.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>        <section id="diferenciais" className="py-16 md:py-24 bg-[#000000] border-y border-primary/20 scroll-mt-28">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 md:mb-20">
               <div className="geometric-line mx-auto mb-6" />
               <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">NOSSOS DIFERENCIAIS</h2>
             </div>
@@ -529,7 +556,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="contato" className="py-20 md:py-24 bg-white text-[#0a0e27] scroll-mt-28 overflow-hidden">
+        <section id="contato" className="py-20 md:py-24 bg-[#050505] text-white scroll-mt-28 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="min-w-0">
@@ -537,7 +564,7 @@ const HomePage = () => {
                 <h2 className="heading-font text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight max-w-xl">
                   FALE COM A B ENGENHARIA
                 </h2>
-                <p className="text-gray-600 text-base sm:text-lg font-light mb-10 max-w-xl leading-relaxed">
+                <p className="text-white/70 text-base sm:text-lg font-light mb-10 max-w-xl leading-relaxed">
                   Estamos prontos para entender seu projeto e indicar o melhor caminho técnico.
                 </p>
 
@@ -556,14 +583,14 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <Button asChild className="w-full sm:w-auto bg-[#0a0e27] text-white hover:bg-primary hover:text-[#0a0e27] heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
+                <Button asChild className="w-full sm:w-auto bg-[#000000] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                     SOLICITAR ORÇAMENTO
                   </a>
                 </Button>
               </div>
 
-              <div className="border border-primary/30 p-8 md:p-10 bg-[#0a0e27] text-white">
+              <div className="border border-primary/30 p-8 md:p-10 bg-[#000000] text-white">
                 <h3 className="heading-font text-2xl font-bold mb-6">COMECE SEU PROJETO</h3>
                 <p className="text-white/70 font-light leading-relaxed mb-8">
                   Ao clicar no WhatsApp, a mensagem já vai pronta para iniciar o pedido de orçamento. Conte o tipo de obra, localização e fase atual do projeto.

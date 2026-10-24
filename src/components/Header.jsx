@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const whatsappUrl = 'https://api.whatsapp.com/send?phone=5511988535276&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20um%20projeto.';
+  const whatsappUrl = getWhatsAppUrl();
 
   useEffect(() => {
     const handleScroll = () => {
