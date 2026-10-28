@@ -47,7 +47,7 @@ const Header = () => {
           <div className="flex min-h-[72px] items-center justify-between gap-3 sm:gap-6">
             <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3 group">
               <img
-                src="/img/logo.svg"
+                src="/img/logo-bengenharia.png"
                 alt="B Engenharia"
                 className="h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 object-contain"
               />

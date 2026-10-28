@@ -51,7 +51,7 @@ const SobrePage = () => {
               
               <div className="relative z-10 flex aspect-square w-full items-center justify-center bg-card p-8 sm:p-12 shadow-2xl">
                 <img
-                  src="/img/logo.svg"
+                  src="/img/logo-bengenharia.png"
                   alt="Logo B Engenharia"
                   className="h-full w-full object-contain"
                 />

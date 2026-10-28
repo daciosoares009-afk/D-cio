@@ -230,7 +230,7 @@ const HomePage = () => {
                 <div className="absolute -inset-4 border border-primary/30 translate-x-4 translate-y-4 z-0" />
                 <div className="relative z-10 flex h-[320px] sm:h-[420px] lg:h-[560px] items-center justify-center bg-[#0A0E27] p-8 sm:p-12">
                   <img
-                    src="/img/logo.svg"
+                    src="/img/logo-bengenharia.png"
                     alt="Logo B Engenharia"
                     className="h-full w-full object-contain"
                   />
