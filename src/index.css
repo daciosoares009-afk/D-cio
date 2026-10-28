@@ -79,6 +79,33 @@ body::before {
     --radius: 0rem;
   }
 
+  :root.light {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --primary: 43 78% 61%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 223 49% 12%;
+
+    --accent: 43 78% 61%;
+    --accent-foreground: 0 0% 8%;
+
+    --muted: 210 40% 98%;
+    --muted-foreground: 223 49% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --border: 43 78% 61%;
+    --input: 220 13% 91%;
+    --ring: 43 78% 61%;
+  }
+
   .dark {
     --background: 223 49% 12%;
     --foreground: 45 60% 95%;
@@ -105,6 +132,30 @@ body::before {
     --input: 220 12% 18%;
     --ring: 43 78% 61%;
   }
+}
+
+html,
+body,
+#root {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+html.light body,
+html.light #root {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+html.light [class*="bg-[#0A0E27]"],
+html.light [class*="bg-[#050505]"],
+html.light [class*="bg-[#080808]"],
+html.light [class*="bg-black"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+html.light [class*="text-white"] {
+  color: hsl(var(--foreground)) !important;
 }
 
 @layer components {
