@@ -8,7 +8,7 @@ import Footer from '@/components/Footer.jsx';
 
 const SobrePage = () => {
   return (
-    <div className="bg-[#000000] min-h-screen">
+    <div className="bg-[#0A0E27] min-h-screen">
       <Helmet>
         <title>Sobre Nós | B Engenharia</title>
         <meta name="description" content="Conheça a história, missão e valores da B Engenharia." />
@@ -18,7 +18,7 @@ const SobrePage = () => {
 
       <main className="pt-32 pb-24">
         {/* Header Section */}
-        <section className="bg-[#000000] text-white py-20 -mt-32 pt-40 mb-24">
+        <section className="bg-[#0A0E27] text-white py-20 -mt-32 pt-40 mb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const SobrePage = () => {
               <div className="absolute -inset-4 border border-primary translate-x-4 translate-y-4 z-0" />
               <div className="absolute -inset-4 border border-primary/30 -translate-x-2 -translate-y-2 z-0" />
               
-              <div className="relative z-10 flex aspect-square w-full items-center justify-center bg-[#000000] p-8 sm:p-12 shadow-2xl">
+              <div className="relative z-10 flex aspect-square w-full items-center justify-center bg-[#0A0E27] p-8 sm:p-12 shadow-2xl">
                 <img
                   src="/img/logo.svg"
                   alt="Logo B Engenharia"
@@ -83,7 +83,7 @@ const SobrePage = () => {
                 </p>
               </div>
 
-              <Button asChild className="bg-[#000000] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto transition-colors duration-300">
+              <Button asChild className="bg-[#0A0E27] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto transition-colors duration-300">
                 <Link to="/portfolio">CONHEÇA NOSSOS PROJETOS</Link>
               </Button>
             </motion.div>
@@ -91,7 +91,7 @@ const SobrePage = () => {
         </section>
 
         {/* Philosophy Section */}
-        <section className="bg-[#050505] py-24">
+        <section className="bg-[#0A0E27] py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="heading-font text-3xl md:text-4xl font-bold text-white mb-4">
@@ -147,7 +147,7 @@ const SobrePage = () => {
           <h2 className="heading-font text-3xl font-bold text-white mb-8">
             PRONTO PARA INICIAR SEU PROJETO
           </h2>
-          <Button asChild className="bg-[#000000] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-10 py-6 h-auto transition-colors duration-300">
+          <Button asChild className="bg-[#0A0E27] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-10 py-6 h-auto transition-colors duration-300">
             <Link to="/contato">FALE COM NOSSA EQUIPE</Link>
           </Button>
         </section>

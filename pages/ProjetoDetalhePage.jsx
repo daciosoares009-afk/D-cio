@@ -12,7 +12,7 @@ const ProjetoDetalhePage = () => {
 
   if (!project) {
     return (
-      <div className="bg-[#000000] min-h-screen text-white">
+      <div className="bg-[#0A0E27] min-h-screen text-white">
         <Header />
         <main className="pt-36 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="heading-font text-4xl font-bold mb-6">Projeto nao encontrado</h1>
@@ -26,7 +26,7 @@ const ProjetoDetalhePage = () => {
   const hasPlans = project.plans.length > 0;
 
   return (
-    <div className="bg-[#000000] min-h-screen">
+    <div className="bg-[#0A0E27] min-h-screen">
       <Helmet>
         <title>{project.title} | B Engenharia</title>
         <meta name="description" content={`Veja plantas e imagens do projeto ${project.title}.`} />
@@ -73,7 +73,7 @@ const ProjetoDetalhePage = () => {
             </div>
 
             {!hasPlans && (
-              <div className="photo-watermark relative overflow-hidden border border-primary/20 bg-[#050505]">
+              <div className="photo-watermark relative overflow-hidden border border-primary/20 bg-[#0A0E27]">
                 <img
                   src={project.cover}
                   alt={`${project.coverLabel} - ${project.title}`}
@@ -98,7 +98,7 @@ const ProjetoDetalhePage = () => {
 
             <div className="grid grid-cols-1 gap-8">
               {project.plans.map((plan, index) => (
-                <div key={plan} className="photo-watermark relative overflow-hidden border border-primary/20 bg-[#050505]">
+                <div key={plan} className="photo-watermark relative overflow-hidden border border-primary/20 bg-[#0A0E27]">
                   <img
                     src={plan}
                     alt={`${project.title} - planta ${index + 1}`}
@@ -124,7 +124,7 @@ const ProjetoDetalhePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {project.images.map((image, index) => (
-                <div key={image} className="photo-watermark relative aspect-[4/3] overflow-hidden border border-primary/20 bg-[#050505]">
+                <div key={image} className="photo-watermark relative aspect-[4/3] overflow-hidden border border-primary/20 bg-[#0A0E27]">
                   <img
                     src={image}
                     alt={`${project.title} - foto ${index + 1}`}

@@ -39,8 +39,8 @@ const Header = () => {
         className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
           scrolled
             ?
-            'bg-[#000000]/95 backdrop-blur-md border-primary/20 py-2'
-            : 'bg-[#000000] border-transparent py-2 sm:py-3'
+            'bg-[#0A0E27]/95 backdrop-blur-md border-primary/20 py-2'
+            : 'bg-[#0A0E27] border-transparent py-2 sm:py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +101,7 @@ const Header = () => {
         </div>
 
         {mobileMenuOpen && (
-          <div className="xl:hidden absolute top-full left-0 w-full bg-[#000000] border-b border-primary/20">
+          <div className="xl:hidden absolute top-full left-0 w-full bg-[#0A0E27] border-b border-primary/20">
             <nav className="flex flex-col px-4 py-6 gap-4">
               {navLinks.map((link) => (
                 <Link

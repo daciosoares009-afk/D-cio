@@ -40,7 +40,7 @@ const ServiçosPage = () => {
   ];
 
   return (
-    <div className="bg-[#000000] min-h-screen">
+    <div className="bg-[#0A0E27] min-h-screen">
       <Helmet>
         <title>Serviços | B Engenharia</title>
         <meta name="description" content="Conheça os serviços especializados da B Engenharia: projetos estruturais, consultoria técnica, orçamentos e mais." />
@@ -72,7 +72,7 @@ const ServiçosPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="border border-primary/20 p-10 bg-[#000000] hover:border-primary transition-all duration-500 group"
+                className="border border-primary/20 p-10 bg-[#0A0E27] hover:border-primary transition-all duration-500 group"
               >
                 <service.icon className="w-10 h-10 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />
                 <h2 className="heading-font text-xl font-bold text-white mb-4">

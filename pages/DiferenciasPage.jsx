@@ -34,7 +34,7 @@ const DiferenciaisPage = () => {
   ];
 
   return (
-    <div className="bg-[#000000] min-h-screen">
+    <div className="bg-[#0A0E27] min-h-screen">
       <Helmet>
         <title>Diferenciais | B Engenharia</title>
         <meta name="description" content="O que nos torna únicos no mercado de engenharia. Conheça os diferenciais da B Engenharia." />
@@ -66,7 +66,7 @@ const DiferenciaisPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="border border-primary/20 p-10 bg-[#000000] hover:border-primary transition-colors duration-500 group relative overflow-hidden"
+                className="border border-primary/20 p-10 bg-[#0A0E27] hover:border-primary transition-colors duration-500 group relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16 transition-transform duration-500 group-hover:scale-150" />
                 

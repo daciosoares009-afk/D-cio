@@ -117,7 +117,7 @@ const PortfolioPage = () => {
   ];
 
   return (
-    <div className="bg-[#000000] min-h-screen">
+    <div className="bg-[#0A0E27] min-h-screen">
       <Helmet>
         <title>Projetos | B Engenharia</title>
         <meta
@@ -152,7 +152,7 @@ const PortfolioPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className={`group relative overflow-hidden border border-primary/25 bg-[#080808] ${
+                className={`group relative overflow-hidden border border-primary/25 bg-[#0A0E27] ${
                   index === 0 ? 'md:col-span-2' : ''
                 }`}
               >
@@ -168,7 +168,7 @@ const PortfolioPage = () => {
                   />
                 </div>
 
-                <div className="p-8 relative z-20 bg-[#000000] border-t border-primary/20">
+                <div className="p-8 relative z-20 bg-[#0A0E27] border-t border-primary/20">
                   <span className="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">
                     {project.category}
                   </span>

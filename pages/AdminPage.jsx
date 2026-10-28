@@ -47,7 +47,7 @@ const AdminPage = () => {
   };
 
   return (
-    <div className="bg-[#000000] min-h-screen text-white">
+    <div className="bg-[#0A0E27] min-h-screen text-white">
       <Helmet>
         <title>Admin | B Engenharia</title>
         <meta name="robots" content="noindex,nofollow" />

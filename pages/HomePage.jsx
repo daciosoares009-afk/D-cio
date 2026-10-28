@@ -154,7 +154,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-[#000000] min-h-screen">
+    <div className="bg-[#0A0E27] min-h-screen">
       <Helmet>
         <title>B Engenharia | Projetos Estruturais, Reformas e Interiores em São Paulo</title>
         <meta
@@ -176,7 +176,7 @@ const HomePage = () => {
               alt="Arquitetura moderna"
               className="w-full h-full object-cover opacity-30"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#000000] via-[#000000]/90 to-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E27] via-[#0A0E27]/90 to-[#0A0E27]/40" />
           </div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -205,7 +205,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="sobre" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
+        <section id="sobre" className="py-16 md:py-24 bg-[#0A0E27] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -228,7 +228,7 @@ const HomePage = () => {
 
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
                 <div className="absolute -inset-4 border border-primary/30 translate-x-4 translate-y-4 z-0" />
-                <div className="relative z-10 flex h-[320px] sm:h-[420px] lg:h-[560px] items-center justify-center bg-[#000000] p-8 sm:p-12">
+                <div className="relative z-10 flex h-[320px] sm:h-[420px] lg:h-[560px] items-center justify-center bg-[#0A0E27] p-8 sm:p-12">
                   <img
                     src="/img/logo.svg"
                     alt="Logo B Engenharia"
@@ -240,7 +240,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="servicos" className="py-16 md:py-24 bg-[#000000] border-y border-primary/20 scroll-mt-28">
+        <section id="servicos" className="py-16 md:py-24 bg-[#0A0E27] border-y border-primary/20 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 md:mb-20">
               <div className="geometric-line mx-auto mb-6" />
@@ -258,7 +258,7 @@ const HomePage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.06 }}
-                  className="border border-primary/20 p-8 bg-[#000000] hover:border-primary transition-all duration-500 group"
+                  className="border border-primary/20 p-8 bg-[#0A0E27] hover:border-primary transition-all duration-500 group"
                 >
                   <service.icon className="w-10 h-10 text-primary mb-8 group-hover:scale-110 transition-transform duration-500" strokeWidth={1} />
                   <h3 className="heading-font text-xl font-bold text-white mb-4">{service.title}</h3>
@@ -270,7 +270,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="como-funciona" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
+        <section id="como-funciona" className="py-16 md:py-24 bg-[#0A0E27] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 md:mb-16 max-w-3xl">
               <div className="geometric-line mb-6" />
@@ -291,7 +291,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="projetos-completos" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
+        <section id="projetos-completos" className="py-16 md:py-24 bg-[#0A0E27] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 md:mb-16">
               <div className="geometric-line mx-auto mb-6" />
@@ -308,9 +308,9 @@ const HomePage = () => {
                 <Link
                   key={project.slug}
                   to={`/projetos/${project.slug}`}
-                  className="group border border-primary/25 bg-[#080808] overflow-hidden transition-all duration-300 hover:border-primary"
+                  className="group border border-primary/25 bg-[#0A0E27] overflow-hidden transition-all duration-300 hover:border-primary"
                 >
-                  <div className="photo-watermark relative aspect-[16/10] overflow-hidden bg-[#050505]">
+                  <div className="photo-watermark relative aspect-[16/10] overflow-hidden bg-[#0A0E27]">
                     <img
                       src={project.cover}
                       alt={`${project.coverLabel} - ${project.title}`}
@@ -332,7 +332,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="bastidores" className="py-16 md:py-24 bg-[#000000] text-white border-y border-primary/20 scroll-mt-28">
+        <section id="bastidores" className="py-16 md:py-24 bg-[#0A0E27] text-white border-y border-primary/20 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
               <div>
@@ -364,7 +364,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="prova-tecnica" className="py-16 md:py-24 bg-[#050505] text-white scroll-mt-28">
+        <section id="prova-tecnica" className="py-16 md:py-24 bg-[#0A0E27] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 md:mb-16">
               <div className="geometric-line mx-auto mb-6" />
@@ -385,7 +385,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="depoimentos" className="py-16 md:py-24 bg-[#000000] text-white border-y border-primary/20 scroll-mt-28">
+        <section id="depoimentos" className="py-16 md:py-24 bg-[#0A0E27] text-white border-y border-primary/20 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 md:mb-16">
               <div className="geometric-line mx-auto mb-6" />
@@ -410,7 +410,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="feedback" className="py-20 md:py-24 bg-[#050505] text-white scroll-mt-28">
+        <section id="feedback" className="py-20 md:py-24 bg-[#0A0E27] text-white scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-16 items-start">
               <div>
@@ -425,7 +425,7 @@ const HomePage = () => {
               </div>
 
               <div className="space-y-8">
-                <form onSubmit={handleFeedbackSubmit} className="border border-primary/25 bg-[#000000] p-5 sm:p-8 md:p-10 shadow-[0_24px_60px_rgba(201,169,97,0.10)]">
+                <form onSubmit={handleFeedbackSubmit} className="border border-primary/25 bg-[#0A0E27] p-5 sm:p-8 md:p-10 shadow-[0_24px_60px_rgba(201,169,97,0.10)]">
                   <div className="grid grid-cols-1 gap-5">
                     <label className="block">
                       <span className="heading-font text-primary text-xs font-bold tracking-widest mb-3 block">NOME</span>
@@ -516,7 +516,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-        </section>        <section id="diferenciais" className="py-16 md:py-24 bg-[#000000] border-y border-primary/20 scroll-mt-28">
+        </section>        <section id="diferenciais" className="py-16 md:py-24 bg-[#0A0E27] border-y border-primary/20 scroll-mt-28">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 md:mb-20">
               <div className="geometric-line mx-auto mb-6" />
@@ -547,7 +547,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="contato" className="py-20 md:py-24 bg-[#050505] text-white scroll-mt-28 overflow-hidden">
+        <section id="contato" className="py-20 md:py-24 bg-[#0A0E27] text-white scroll-mt-28 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="min-w-0">
@@ -574,14 +574,14 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <Button asChild className="w-full sm:w-auto bg-[#000000] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
+                <Button asChild className="w-full sm:w-auto bg-[#0A0E27] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
                   <a href="mailto:eng.bernardos@gmail.com">
                     SOLICITAR ORÇAMENTO
                   </a>
                 </Button>
               </div>
 
-              <div className="border border-primary/30 p-8 md:p-10 bg-[#000000] text-white">
+              <div className="border border-primary/30 p-8 md:p-10 bg-[#0A0E27] text-white">
                 <h3 className="heading-font text-2xl font-bold mb-6">COMECE SEU PROJETO</h3>
                 <p className="text-white/70 font-light leading-relaxed mb-8">
                   Nossa equipe vai entender o tipo de obra, a localização e a fase atual do projeto para preparar a melhor solução técnica.

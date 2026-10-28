@@ -47,8 +47,8 @@ body::before {
 
 @layer base {
   :root {
-    /* Brand palette: premium black + gold inspired by the official logo */
-    --background: 0 0% 0%;
+    /* Brand palette: deep navy background to match the official logo */
+    --background: 223 49% 12%;
     --foreground: 45 60% 95%;
 
     --primary: 43 78% 61%;
@@ -63,10 +63,10 @@ body::before {
     --muted: 220 8% 13%;
     --muted-foreground: 43 18% 82%;
 
-    --card: 0 0% 3%;
+    --card: 223 49% 12%;
     --card-foreground: 45 60% 95%;
 
-    --popover: 0 0% 3%;
+    --popover: 223 49% 12%;
     --popover-foreground: 45 60% 95%;
 
     --border: 43 78% 61%;
@@ -80,7 +80,7 @@ body::before {
   }
 
   .dark {
-    --background: 0 0% 0%;
+    --background: 223 49% 12%;
     --foreground: 45 60% 95%;
 
     --primary: 43 78% 61%;
@@ -95,10 +95,10 @@ body::before {
     --muted: 220 8% 13%;
     --muted-foreground: 43 18% 82%;
 
-    --card: 0 0% 3%;
+    --card: 223 49% 12%;
     --card-foreground: 45 60% 95%;
 
-    --popover: 0 0% 3%;
+    --popover: 223 49% 12%;
     --popover-foreground: 45 60% 95%;
 
     --border: 43 78% 61%;
