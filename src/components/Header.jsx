@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, MessageCircle, MoonStar, SunMedium, X } from 'lucide-react';
+import { Menu, MoonStar, SunMedium, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
@@ -12,7 +12,12 @@ const Header = () => {
       return 'dark';
     }
 
-    return document.documentElement.classList.contains('light') ? 'light' : 'dark';
+    const savedTheme = window.localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme;
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
   const location = useLocation();
 
@@ -60,8 +65,8 @@ const Header = () => {
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
           scrolled
-            ? 'bg-[#0A0E27]/95 backdrop-blur-md border-primary/20 py-2'
-            : 'bg-[#0A0E27] border-transparent py-2 sm:py-3'
+            ? 'bg-background/95 backdrop-blur-md border-primary/20 py-2'
+            : 'bg-background border-transparent py-2 sm:py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,10 +78,10 @@ const Header = () => {
                 className="h-14 w-14 sm:h-16 sm:w-16 lg:h-20 lg:w-20 object-contain"
               />
               <div className="hidden sm:flex xl:flex flex-col leading-none min-w-0">
-                <span className="heading-font text-lg lg:text-xl xl:text-2xl font-bold text-white tracking-widest group-hover:text-primary transition-colors">
+                <span className="heading-font text-lg lg:text-xl xl:text-2xl font-bold text-foreground tracking-widest group-hover:text-primary transition-colors">
                   B ENGENHARIA
                 </span>
-                <span className="mt-2 text-[9px] lg:text-[10px] xl:text-[11px] font-semibold tracking-[0.22em] xl:tracking-[0.28em] text-white/60">
+                <span className="mt-2 text-[9px] lg:text-[10px] xl:text-[11px] font-semibold tracking-[0.22em] xl:tracking-[0.28em] text-foreground/60">
                   ESTRUTURANDO SONHOS
                 </span>
               </div>
@@ -88,8 +93,7 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   className={`heading-font text-xs font-semibold transition-all duration-200 relative whitespace-nowrap ${
-                    isActive(link.path) ? 'text-primary' : 'text-white/80 hover:text-primary'
-                  }`}
+                    isActive(link.path)                     ? 'text-primary' : 'text-foreground/80 hover:text-primary'                  }`}
                 >
                   {link.name}
                   {isActive(link.path) && (
@@ -102,9 +106,9 @@ const Header = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#1fb45d]"
+                className="inline-flex items-center gap-2 bg-[#0B5ED7] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#0A4FB7]"
               >
-                <MessageCircle className="h-4 w-4" />
+                <img src="/img/whatsapp.svg" alt="WhatsApp" className="h-4 w-4" />
                 WhatsApp
               </a>
 
@@ -152,7 +156,7 @@ const Header = () => {
         </div>
 
         {mobileMenuOpen && (
-          <div className="xl:hidden absolute top-full left-0 w-full bg-[#0A0E27] border-b border-primary/20">
+          <div className="xl:hidden absolute top-full left-0 w-full bg-background border-b border-primary/20">
             <nav className="flex flex-col px-4 py-6 gap-4">
               {navLinks.map((link) => (
                 <Link
@@ -160,7 +164,7 @@ const Header = () => {
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`heading-font text-sm font-semibold transition-all duration-200 ${
-                    isActive(link.path) ? 'text-primary' : 'text-white hover:text-primary'
+                    isActive(link.path) ? 'text-primary' : 'text-foreground hover:text-primary'
                   }`}
                 >
                   {link.name}
@@ -172,7 +176,7 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="heading-font text-sm font-semibold text-[#25D366] mt-2"
+                className="heading-font text-sm font-semibold text-[#0B5ED7] mt-2"
               >
                 WHATSAPP
               </a>

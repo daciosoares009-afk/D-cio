@@ -47,7 +47,6 @@ body::before {
 
 @layer base {
   :root {
-    /* Brand palette: deep navy background to match the official logo */
     --background: 223 49% 12%;
     --foreground: 45 60% 95%;
 
@@ -79,9 +78,9 @@ body::before {
     --radius: 0rem;
   }
 
-  :root.light {
+  html.light {
     --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --foreground: 223 49% 12%;
 
     --primary: 43 78% 61%;
     --primary-foreground: 0 0% 8%;
@@ -92,21 +91,21 @@ body::before {
     --accent: 43 78% 61%;
     --accent-foreground: 0 0% 8%;
 
-    --muted: 210 40% 98%;
+    --muted: 210 40% 97%;
     --muted-foreground: 223 49% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 223 49% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 223 49% 12%;
 
     --border: 43 78% 61%;
     --input: 220 13% 91%;
     --ring: 43 78% 61%;
   }
 
-  .dark {
+  html.dark {
     --background: 223 49% 12%;
     --foreground: 45 60% 95%;
 
@@ -141,20 +140,41 @@ body,
   color: hsl(var(--foreground));
 }
 
-html.light body,
-html.light #root {
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
-
 html.light [class*="bg-[#0A0E27]"],
 html.light [class*="bg-[#050505]"],
 html.light [class*="bg-[#080808]"],
+html.light [class*="bg-[#101010]"],
 html.light [class*="bg-black"] {
   background-color: hsl(var(--card)) !important;
 }
 
-html.light [class*="text-white"] {
+html.light [class*="text-white"],
+html.light [class*="text-white/70"],
+html.light [class*="text-white/80"],
+html.light [class*="text-white/60"],
+html.light [class*="text-white/50"],
+html.light [class*="text-white/40"] {
+  color: hsl(var(--foreground)) !important;
+}
+
+html.light [class*="border-primary/20"],
+html.light [class*="border-primary/25"],
+html.light [class*="border-primary/30"],
+html.light [class*="border-primary/10"] {
+  border-color: rgba(10, 14, 39, 0.16) !important;
+}
+
+html.light header,
+html.light footer {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+}
+
+html.light header .text-white,
+html.light footer .text-white,
+html.light header .text-white\/60,
+html.light footer .text-white\/70,
+html.light header .text-white\/80,
+html.light footer .text-white\/80 {
   color: hsl(var(--foreground)) !important;
 }
 

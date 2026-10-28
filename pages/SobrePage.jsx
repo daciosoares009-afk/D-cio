@@ -8,7 +8,7 @@ import Footer from '@/components/Footer.jsx';
 
 const SobrePage = () => {
   return (
-    <div className="bg-[#0A0E27] min-h-screen">
+    <div className="bg-background min-h-screen">
       <Helmet>
         <title>Sobre Nós | B Engenharia</title>
         <meta name="description" content="Conheça a história, missão e valores da B Engenharia." />
@@ -18,7 +18,7 @@ const SobrePage = () => {
 
       <main className="pt-32 pb-24">
         {/* Header Section */}
-        <section className="bg-[#0A0E27] text-white py-20 -mt-32 pt-40 mb-24">
+        <section className="bg-background text-foreground py-20 -mt-32 pt-40 mb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const SobrePage = () => {
               <div className="absolute -inset-4 border border-primary translate-x-4 translate-y-4 z-0" />
               <div className="absolute -inset-4 border border-primary/30 -translate-x-2 -translate-y-2 z-0" />
               
-              <div className="relative z-10 flex aspect-square w-full items-center justify-center bg-[#0A0E27] p-8 sm:p-12 shadow-2xl">
+              <div className="relative z-10 flex aspect-square w-full items-center justify-center bg-card p-8 sm:p-12 shadow-2xl">
                 <img
                   src="/img/logo.svg"
                   alt="Logo B Engenharia"
@@ -67,11 +67,11 @@ const SobrePage = () => {
               <h2 className="heading-font text-primary text-sm font-bold tracking-widest mb-4 uppercase">
                 QUEM NÓS SOMOS
               </h2>
-              <h3 className="heading-font text-3xl md:text-4xl font-bold text-white mb-8 leading-tight">
+              <h3 className="heading-font text-3xl md:text-4xl font-bold text-foreground mb-8 leading-tight">
                 MAIS QUE ENGENHARIA, CONSTRUÍMOS CONFIANÇA.
               </h3>
               
-              <div className="space-y-6 text-white/70 font-light leading-relaxed mb-10">
+              <div className="space-y-6 text-foreground/70 font-light leading-relaxed mb-10">
                 <p>
                   Olá, você que está chegando, seja muito bem-vindo à nossa página. Somos a B Engenharia, uma equipe dedicada a transformar ideias em projetos seguros, funcionais e bem planejados.
                 </p>
@@ -83,7 +83,7 @@ const SobrePage = () => {
                 </p>
               </div>
 
-              <Button asChild className="bg-[#0A0E27] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto transition-colors duration-300">
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto transition-colors duration-300">
                 <Link to="/portfolio">CONHEÇA NOSSOS PROJETOS</Link>
               </Button>
             </motion.div>
@@ -91,10 +91,10 @@ const SobrePage = () => {
         </section>
 
         {/* Philosophy Section */}
-        <section className="bg-[#0A0E27] py-24">
+        <section className="bg-background py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="heading-font text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="heading-font text-3xl md:text-4xl font-bold text-foreground mb-4">
                 NOSSA FILOSOFIA
               </h2>
               <div className="geometric-line mx-auto" />
@@ -105,10 +105,10 @@ const SobrePage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-[#101010] p-10 border-t-4 border-primary shadow-sm"
+                className="bg-card p-10 border-t-4 border-primary shadow-sm"
               >
-                <h3 className="heading-font text-xl font-bold text-white mb-4">MISSÃO</h3>
-                <p className="text-white/70 font-light leading-relaxed">
+                <h3 className="heading-font text-xl font-bold text-foreground mb-4">MISSÃO</h3>
+                <p className="text-foreground/70 font-light leading-relaxed">
                   Entregar projetos estruturais e arquitetônicos que superem as expectativas, unindo estética, funcionalidade e rigor técnico, garantindo a total satisfação de nossos clientes.
                 </p>
               </motion.div>
@@ -118,10 +118,10 @@ const SobrePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="bg-[#101010] p-10 border-t-4 border-primary shadow-sm"
+                className="bg-card p-10 border-t-4 border-primary shadow-sm"
               >
-                <h3 className="heading-font text-xl font-bold text-white mb-4">VISÃO</h3>
-                <p className="text-white/70 font-light leading-relaxed">
+                <h3 className="heading-font text-xl font-bold text-foreground mb-4">VISÃO</h3>
+                <p className="text-foreground/70 font-light leading-relaxed">
                   Ser a principal referência em engenharia de alto padrão no mercado nacional, reconhecida pela inovação tecnológica, sustentabilidade e excelência em cada detalhe.
                 </p>
               </motion.div>
@@ -131,10 +131,10 @@ const SobrePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="bg-[#101010] p-10 border-t-4 border-primary shadow-sm"
+                className="bg-card p-10 border-t-4 border-primary shadow-sm"
               >
-                <h3 className="heading-font text-xl font-bold text-white mb-4">VALORES</h3>
-                <p className="text-white/70 font-light leading-relaxed">
+                <h3 className="heading-font text-xl font-bold text-foreground mb-4">VALORES</h3>
+                <p className="text-foreground/70 font-light leading-relaxed">
                   Ética inegociável, transparência absoluta, compromisso com a segurança, valorização humana e busca contínua pela perfeição técnica em todas as nossas entregas.
                 </p>
               </motion.div>
@@ -144,10 +144,10 @@ const SobrePage = () => {
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 text-center">
-          <h2 className="heading-font text-3xl font-bold text-white mb-8">
+          <h2 className="heading-font text-3xl font-bold text-foreground mb-8">
             PRONTO PARA INICIAR SEU PROJETO
           </h2>
-          <Button asChild className="bg-[#0A0E27] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-10 py-6 h-auto transition-colors duration-300">
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-10 py-6 h-auto transition-colors duration-300">
             <Link to="/contato">FALE COM NOSSA EQUIPE</Link>
           </Button>
         </section>

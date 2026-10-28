@@ -26,7 +26,7 @@ const ContatoPage = () => {
   };
 
   return (
-    <div className="bg-[#0A0E27] min-h-screen">
+    <div className="bg-background min-h-screen">
       <Helmet>
         <title>Contato | B Engenharia</title>
         <meta name="description" content="Entre em contato com a B Engenharia para discutir seu próximo projeto." />
@@ -42,10 +42,10 @@ const ContatoPage = () => {
             className="text-center mb-20"
           >
             <div className="geometric-line mx-auto mb-6" />
-            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="heading-font text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
               ENTRE EM CONTATO
             </h1>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto font-light">
+            <p className="text-foreground/70 text-lg max-w-2xl mx-auto font-light">
               Estamos prontos para transformar seu projeto em realidade.
             </p>
           </motion.div>
@@ -57,15 +57,15 @@ const ContatoPage = () => {
               className="space-y-12"
             >
               <div>
-                <h2 className="heading-font text-2xl font-bold text-white mb-8">INFORMAÇÕES DE CONTATO</h2>
+                <h2 className="heading-font text-2xl font-bold text-foreground mb-8">INFORMAÇÕES DE CONTATO</h2>
                 <div className="space-y-8">
                   <div className="flex items-start gap-6">
                     <div className="w-12 h-12 border border-primary/30 flex items-center justify-center shrink-0">
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold mb-1">Telefone</h3>
-                      <p className="text-white/60 font-light">+55 (11) 98853-5276</p>
+                      <h3 className="text-foreground font-bold mb-1">Telefone</h3>
+                      <p className="text-foreground/60 font-light">+55 (11) 98853-5276</p>
                     </div>
                   </div>
                   
@@ -74,7 +74,7 @@ const ContatoPage = () => {
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold mb-1">E-mail</h3>
+                      <h3 className="text-foreground font-bold mb-1">E-mail</h3>
                       <p className="text-white/60 font-light break-all">eng.bernardos@gmail.com</p>
                     </div>
                   </div>
@@ -84,8 +84,8 @@ const ContatoPage = () => {
                       <MapPin className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-white font-bold mb-1">Endereço</h3>
-                      <p className="text-white/60 font-light">Av. Engenheiro Luís Carlos Berrini, 1500<br/>São Paulo - SP</p>
+                      <h3 className="text-foreground font-bold mb-1">Endereço</h3>
+                      <p className="text-foreground/60 font-light">Av. Engenheiro Luís Carlos Berrini, 1500<br/>São Paulo - SP</p>
                     </div>
                   </div>
                 </div>
@@ -96,16 +96,16 @@ const ContatoPage = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <form onSubmit={handleSubmit} className="bg-[#0A0E27] border border-primary/30 p-8 md:p-10">
-                <h2 className="heading-font text-2xl font-bold text-white mb-8">ENVIE UMA MENSAGEM</h2>
+              <form onSubmit={handleSubmit} className="bg-card border border-primary/30 p-8 md:p-10">
+                <h2 className="heading-font text-2xl font-bold text-foreground mb-8">ENVIE UMA MENSAGEM</h2>
                 
                 <div className="space-y-6">
                   <div>
-                    <Label htmlFor="name" className="text-white/80 text-xs font-bold tracking-widest uppercase mb-2 block">Nome Completo</Label>
+                    <Label htmlFor="name" className="text-foreground/80 text-xs font-bold tracking-widest uppercase mb-2 block">Nome Completo</Label>
                     <Input 
                       id="name" 
                       required 
-                      className="bg-transparent border-primary/30 text-white rounded-none focus-visible:ring-primary h-12"
+                      className="bg-background border-primary/30 text-foreground rounded-none focus-visible:ring-primary h-12"
                     />
                   </div>
                   
@@ -115,7 +115,7 @@ const ContatoPage = () => {
                       id="email" 
                       type="email" 
                       required 
-                      className="bg-transparent border-primary/30 text-white rounded-none focus-visible:ring-primary h-12"
+                      className="bg-background border-primary/30 text-foreground rounded-none focus-visible:ring-primary h-12"
                     />
                   </div>
 
@@ -124,7 +124,7 @@ const ContatoPage = () => {
                     <Textarea 
                       id="message" 
                       required 
-                      className="bg-transparent border-primary/30 text-white rounded-none focus-visible:ring-primary min-h-[150px] resize-none"
+                      className="bg-background border-primary/30 text-foreground rounded-none focus-visible:ring-primary min-h-[150px] resize-none"
                     />
                   </div>
 
