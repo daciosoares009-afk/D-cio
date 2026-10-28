@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const instagramUrl = 'https://www.instagram.com/b.engenhariaaaigsh=MXBjanptZnIwNHF5Zw==';
+  const instagramUrl = 'https://www.instagram.com/b.engenhariaaa?srtk=MXBjanptZnIwNHF5Zw==';
   const linkedinUrl = 'https://www.linkedin.com/';
 
   return (

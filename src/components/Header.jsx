@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, MoonStar, SunMedium, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    if (typeof document === 'undefined') {
-      return 'dark';
-    }
-
-    const savedTheme = window.localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  });
   const location = useLocation();
 
   useEffect(() => {
@@ -29,20 +17,6 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    const activeTheme = theme === 'dark' ? 'dark' : 'light';
-
-    root.classList.toggle('dark', activeTheme === 'dark');
-    root.classList.toggle('light', activeTheme === 'light');
-    root.style.colorScheme = activeTheme;
-    window.localStorage.setItem('theme', activeTheme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
-  };
 
   const navLinks = [
     { name: 'INÍCIO', path: '/' },
@@ -113,17 +87,6 @@ const Header = () => {
               </a>
 
               <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}
-                onClick={toggleTheme}
-                className="text-white hover:text-primary hover:bg-transparent"
-              >
-                {theme === 'dark' ? <SunMedium className="h-5 w-5" /> : <MoonStar className="h-5 w-5" />}
-              </Button>
-
-              <Button
                 asChild
                 className="bg-primary text-black hover:bg-primary/90 heading-font text-xs font-bold tracking-wider rounded-none px-7"
               >
@@ -132,17 +95,6 @@ const Header = () => {
             </nav>
 
             <div className="flex items-center gap-2 xl:hidden">
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                aria-label={theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'}
-                onClick={toggleTheme}
-                className="text-white hover:text-primary hover:bg-transparent"
-              >
-                {theme === 'dark' ? <SunMedium className="h-5 w-5" /> : <MoonStar className="h-5 w-5" />}
-              </Button>
-
               <Button
                 variant="ghost"
                 size="icon"
