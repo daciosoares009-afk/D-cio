@@ -574,8 +574,8 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <Button asChild className="w-full sm:w-auto bg-[#0A0E27] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
-                  <a href="mailto:eng.bernardos@gmail.com">
+                <Button asChild className="w-full sm:w-auto bg-primary text-black hover:bg-[#f7d768] hover:text-black heading-font text-sm font-black tracking-[0.18em] rounded-none px-8 py-6 h-auto shadow-[0_0_0_1px_rgba(248,226,138,0.75),0_12px_30px_rgba(247,215,104,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_rgba(248,226,138,0.9),0_18px_40px_rgba(247,215,104,0.45)]">
+                  <a href="mailto:eng.bernardos@gmail.com" className="inline-flex items-center justify-center gap-2">
                     SOLICITAR ORÇAMENTO
                   </a>
                 </Button>
