@@ -106,7 +106,7 @@ const Header = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#0B5ED7] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#0A4FB7]"
+                className="inline-flex items-center gap-2 bg-[#25D366] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-[#1fb45d]"
               >
                 <img src="/img/whatsapp.svg" alt="WhatsApp" className="h-4 w-4" />
                 WhatsApp
@@ -176,8 +176,9 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="heading-font text-sm font-semibold text-[#0B5ED7] mt-2"
+                className="inline-flex items-center gap-2 heading-font text-sm font-semibold text-[#25D366] mt-2"
               >
+                <img src="/img/whatsapp.svg" alt="WhatsApp" className="h-4 w-4" />
                 WHATSAPP
               </a>
 
