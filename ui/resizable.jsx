@@ -11,7 +11,7 @@ const PanelGroupDirectionContext = createContext("horizontal");
 const ResizablePanelGroup = ({
   className,
   direction,
-  orientation = direction ?? "horizontal",
+  orientation = direction "horizontal",
   ...props
 }) => (
   <PanelGroupDirectionContext.Provider value={orientation}>

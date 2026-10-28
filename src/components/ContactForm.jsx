@@ -109,7 +109,7 @@ const ContactForm = () => {
           type="text"
           value={formData.name}
           onChange={(e) => handleChange('name', e.target.value)}
-          className="mt-2 text-gray-900"
+          className="mt-2 text-white"
           placeholder="Seu nome"
         />
         {errors.name && (
@@ -124,7 +124,7 @@ const ContactForm = () => {
           type="email"
           value={formData.email}
           onChange={(e) => handleChange('email', e.target.value)}
-          className="mt-2 text-gray-900"
+          className="mt-2 text-white"
           placeholder="seu@email.com"
         />
         {errors.email && (
@@ -139,7 +139,7 @@ const ContactForm = () => {
           type="tel"
           value={formData.phone}
           onChange={(e) => handleChange('phone', e.target.value)}
-          className="mt-2 text-gray-900"
+          className="mt-2 text-white"
           placeholder="(11) 98765-4321"
         />
         {errors.phone && (
@@ -175,7 +175,7 @@ const ContactForm = () => {
           id="message"
           value={formData.message}
           onChange={(e) => handleChange('message', e.target.value)}
-          className="mt-2 min-h-[150px] text-gray-900"
+          className="mt-2 min-h-[150px] text-white"
           placeholder="Descreva seu projeto ou necessidade..."
         />
         {errors.message && (

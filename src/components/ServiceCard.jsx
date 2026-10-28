@@ -11,7 +11,7 @@ const ServiceCard = ({ icon: Icon, title, description, index }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${
-        isEven ? '' : 'md:flex-row-reverse'
+        isEven '' : 'md:flex-row-reverse'
       }`}
     >
       <div className={`${isEven ? 'md:order-1' : 'md:order-2'}`}>

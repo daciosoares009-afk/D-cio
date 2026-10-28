@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
 const Footer = () => {
   const instagramUrl = 'https://www.instagram.com/b.engenhariaaaigsh=MXBjanptZnIwNHF5Zw==';
   const linkedinUrl = 'https://www.linkedin.com/';
-  const whatsappUrl = getWhatsAppUrl();
 
   return (
     <footer className="bg-[#000000] text-white border-t border-primary/20 pt-14 md:pt-20 pb-10">
@@ -43,15 +41,6 @@ const Footer = () => {
                 <img src="/img/linkedin.svg" alt="" className="w-7 h-7" />
               </a>
 
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp da B Engenharia"
-                className="w-12 h-12 border border-primary/30 flex items-center justify-center hover:border-primary transition-all duration-300"
-              >
-                <img src="/img/whatsapp.svg" alt="" className="w-8 h-8" />
-              </a>
             </div>
           </div>
 

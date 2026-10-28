@@ -1,0 +1,19 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="12" fill="#0a0e27"/>
+  <defs>
+    <linearGradient id="gold" x1="12" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8E28A"/>
+      <stop offset="0.35" stop-color="#D59B25"/>
+      <stop offset="0.7" stop-color="#FFE681"/>
+      <stop offset="1" stop-color="#B87513"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 10H34V22L29 25L24 22V10Z" fill="url(#gold)"/>
+  <path d="M35 20L45 27V34L35 28V20Z" fill="url(#gold)"/>
+  <path d="M13 25H29C35 25 39 28 39 33C39 36 38 38 35 40C39 42 41 45 41 49C41 55 36 58 28 58H13V55H17V28H13V25ZM24 29V38H28C32 38 34 36 34 33C34 30 32 29 28 29H24ZM24 42V55H29C33 55 35 53 35 49C35 45 33 42 29 42H24Z" fill="url(#gold)"/>
+  <path d="M26 35L38 27L51 36V40L39 32L26 40V35Z" fill="url(#gold)"/>
+  <path d="M39 33L49 39V58H39V33Z" fill="url(#gold)"/>
+  <path d="M42 44H48V45.5H42V44Z" fill="#0a0e27"/>
+  <path d="M42 48H48V49.5H42V48Z" fill="#0a0e27"/>
+  <path d="M42 52H48V53.5H42V52Z" fill="#0a0e27"/>
+</svg>

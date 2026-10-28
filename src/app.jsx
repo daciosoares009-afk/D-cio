@@ -9,6 +9,7 @@ import SobrePage from '@/pages/SobrePage.jsx';
 import ContatoPage from '@/pages/ContatoPage.jsx';
 import DiferenciaisPage from '@/pages/DiferenciasPage.jsx';
 import ProjetoDetalhePage from '@/pages/ProjetoDetalhePage.jsx';
+import AdminPage from '@/pages/AdminPage.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/sobre" element={<SobrePage />} />
         <Route path="/contato" element={<ContatoPage />} />
         <Route path="/diferenciais" element={<DiferenciaisPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
       <Toaster />
     </Router>

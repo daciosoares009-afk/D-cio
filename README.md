@@ -44,6 +44,15 @@ npm run build
 ```
 O resultado será gerado na pasta `dist/`.
 
+## Deploy no Vercel
+1. Faça login no Vercel e importe este repositório.
+2. O Vercel detecta automaticamente o projeto Vite.
+3. Mantenha as configurações padrão:
+   - Framework Preset: Vite
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+4. O arquivo `vercel.json` garante que rotas do React Router funcionem corretamente ao acessar URLs diretas.
+
 ## Scripts
 - `npm run dev` — inicia em modo desenvolvimento
 - `npm run build` — gera build para produção

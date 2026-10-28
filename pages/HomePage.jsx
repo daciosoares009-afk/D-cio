@@ -13,7 +13,6 @@ import {
   Mail,
   MapPin,
   Medal,
-  MessageCircle,
   Phone,
   Ruler,
   Search,
@@ -26,7 +25,6 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { completeProjects } from '@/data/completeProjects.js';
 import { createFeedback, feedbackStoreMode, listFeedbacks } from '@/lib/feedbackStore.js';
-import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
 const HomePage = () => {
   const [feedbackName, setFeedbackName] = useState('');
@@ -34,7 +32,6 @@ const HomePage = () => {
   const [feedbackRating, setFeedbackRating] = useState(5);
   const [siteFeedbacks, setSiteFeedbacks] = useState([]);
   const [feedbackStatus, setFeedbackStatus] = useState('');
-  const whatsappUrl = getWhatsAppUrl();
   useEffect(() => {
     const loadFeedbacks = async () => {
       try {
@@ -197,12 +194,6 @@ const HomePage = () => {
                 Soluções inteligentes em engenharia, interiores e reformas para construir com segurança, estética e planejamento.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="w-full sm:w-auto bg-primary text-black hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none px-6 sm:px-8 py-6 h-auto">
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
-                    SOLICITAR ORÇAMENTO
-                    <MessageCircle className="w-5 h-5" />
-                  </a>
-                </Button>
                 <Button asChild size="lg" variant="outline" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-6 sm:px-8 py-6 h-auto">
                   <Link to="/#projetos-completos" className="flex items-center justify-center gap-3">
                     VER PROJETOS
@@ -584,7 +575,7 @@ const HomePage = () => {
                 </div>
 
                 <Button asChild className="w-full sm:w-auto bg-[#000000] text-white hover:bg-primary hover:text-black heading-font text-sm font-bold tracking-wider rounded-none px-8 py-6 h-auto">
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                  <a href="mailto:eng.bernardos@gmail.com">
                     SOLICITAR ORÇAMENTO
                   </a>
                 </Button>
@@ -593,7 +584,7 @@ const HomePage = () => {
               <div className="border border-primary/30 p-8 md:p-10 bg-[#000000] text-white">
                 <h3 className="heading-font text-2xl font-bold mb-6">COMECE SEU PROJETO</h3>
                 <p className="text-white/70 font-light leading-relaxed mb-8">
-                  Ao clicar no WhatsApp, a mensagem já vai pronta para iniciar o pedido de orçamento. Conte o tipo de obra, localização e fase atual do projeto.
+                  Nossa equipe vai entender o tipo de obra, a localização e a fase atual do projeto para preparar a melhor solução técnica.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   <div className="border border-primary/20 p-5">

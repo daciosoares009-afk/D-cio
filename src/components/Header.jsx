@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { getWhatsAppUrl } from '@/lib/whatsapp.js';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  const whatsappUrl = getWhatsAppUrl();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,15 +87,6 @@ const Header = () => {
                 <Link to="/#contato">CONTATO</Link>
               </Button>
 
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Falar no WhatsApp"
-                className="flex h-10 w-10 shrink-0 items-center justify-center transition-transform duration-300 hover:scale-105"
-              >
-                <img src="/img/whatsapp.svg" alt="" className="h-10 w-10" />
-              </a>
             </nav>
 
             <Button
@@ -139,30 +127,10 @@ const Header = () => {
                 CONTATO
               </Link>
 
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="heading-font flex items-center gap-2 text-sm font-semibold text-primary"
-              >
-                <img src="/img/whatsapp.svg" alt="" className="h-5 w-5" />
-                WHATSAPP
-              </a>
             </nav>
           </div>
         )}
       </header>
-
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Falar no WhatsApp"
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full shadow-lg shadow-black/30 transition-transform duration-300 hover:scale-105"
-      >
-        <img src="/img/whatsapp.svg" alt="" className="h-14 w-14 sm:h-16 sm:w-16" />
-      </a>
     </>
   );
 };

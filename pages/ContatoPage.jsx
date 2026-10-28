@@ -26,7 +26,7 @@ const ContatoPage = () => {
   };
 
   return (
-    <div className="bg-[#0a0e27] min-h-screen">
+    <div className="bg-[#000000] min-h-screen">
       <Helmet>
         <title>Contato | B Engenharia</title>
         <meta name="description" content="Entre em contato com a B Engenharia para discutir seu próximo projeto." />
@@ -96,7 +96,7 @@ const ContatoPage = () => {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <form onSubmit={handleSubmit} className="bg-[#0a0e27] border border-primary/30 p-8 md:p-10">
+              <form onSubmit={handleSubmit} className="bg-[#000000] border border-primary/30 p-8 md:p-10">
                 <h2 className="heading-font text-2xl font-bold text-white mb-8">ENVIE UMA MENSAGEM</h2>
                 
                 <div className="space-y-6">
@@ -131,7 +131,7 @@ const ContatoPage = () => {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-primary text-[#0a0e27] hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none h-14"
+                    className="w-full bg-primary text-black hover:bg-primary/90 heading-font text-sm font-bold tracking-wider rounded-none h-14"
                   >
                     {isSubmitting ? 'ENVIANDO...' : 'ENVIAR MENSAGEM'}
                   </Button>

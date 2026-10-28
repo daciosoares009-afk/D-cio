@@ -64,7 +64,7 @@ ${prefix} [data-chart=${id}] {
 ${colorConfig
 .map(([key, itemConfig]) => {
 const color =
-  itemConfig.theme?.[theme] ||
+  itemConfig.theme.[theme] ||
   itemConfig.color
 return color ? `  --color-${key}: ${color};` : null
 })
@@ -99,17 +99,17 @@ const ChartTooltipContent = React.forwardRef((
   const { config } = useChart()
 
   const tooltipLabel = React.useMemo(() => {
-    if (hideLabel || !payload?.length) {
+    if (hideLabel || !payload.length) {
       return null
     }
 
     const [item] = payload
-    const key = `${labelKey || item?.dataKey || item?.name || "value"}`
+    const key = `${labelKey || item.dataKey || item.name || "value"}`
     const itemConfig = getPayloadConfigFromPayload(config, item, key)
     const value =
       !labelKey && typeof label === "string"
-        ? config[label]?.label || label
-        : itemConfig?.label
+        config[label].label || label
+        : itemConfig.label
 
     if (labelFormatter) {
       return (
@@ -134,7 +134,7 @@ const ChartTooltipContent = React.forwardRef((
     labelKey,
   ])
 
-  if (!active || !payload?.length) {
+  if (!active || !payload.length) {
     return null
   }
 
@@ -147,7 +147,7 @@ const ChartTooltipContent = React.forwardRef((
         "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
         className
       )}>
-      {!nestLabel ? tooltipLabel : null}
+      {!nestLabel tooltipLabel : null}
       <div className="grid gap-1.5">
         {payload
           .filter((item) => item.type !== "none")
@@ -163,11 +163,11 @@ const ChartTooltipContent = React.forwardRef((
                   "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
                   indicator === "dot" && "items-center"
                 )}>
-                {formatter && item?.value !== undefined && item.name ? (
+                {formatter && item.value !== undefined && item.name (
                   formatter(item.value, item.name, item, index, item.payload)
                 ) : (
                   <>
-                    {itemConfig?.icon ? (
+                    {itemConfig.icon (
                       <itemConfig.icon />
                     ) : (
                       !hideIndicator && (
@@ -190,12 +190,12 @@ const ChartTooltipContent = React.forwardRef((
                     <div
                       className={cn(
                         "flex flex-1 justify-between leading-none",
-                        nestLabel ? "items-end" : "items-center"
+                        nestLabel "items-end" : "items-center"
                       )}>
                       <div className="grid gap-1.5">
-                        {nestLabel ? tooltipLabel : null}
+                        {nestLabel tooltipLabel : null}
                         <span className="text-muted-foreground">
-                          {itemConfig?.label || item.name}
+                          {itemConfig.label || item.name}
                         </span>
                       </div>
                       {item.value && (
@@ -223,7 +223,7 @@ const ChartLegendContent = React.forwardRef((
 ) => {
   const { config } = useChart()
 
-  if (!payload?.length) {
+  if (!payload.length) {
     return null
   }
 
@@ -247,7 +247,7 @@ const ChartLegendContent = React.forwardRef((
               className={cn(
                 "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
               )}>
-              {itemConfig?.icon && !hideIcon ? (
+              {itemConfig.icon && !hideIcon (
                 <itemConfig.icon />
               ) : (
                 <div
@@ -256,7 +256,7 @@ const ChartLegendContent = React.forwardRef((
                     backgroundColor: item.color,
                   }} />
               )}
-              {itemConfig?.label}
+              {itemConfig.label}
             </div>
           );
         })}
@@ -279,7 +279,7 @@ function getPayloadConfigFromPayload(
     "payload" in payload &&
     typeof payload.payload === "object" &&
     payload.payload !== null
-      ? payload.payload
+      payload.payload
       : undefined
 
   let configLabelKey = key
@@ -298,7 +298,7 @@ function getPayloadConfigFromPayload(
   }
 
   return configLabelKey in config
-    ? config[configLabelKey]
+    config[configLabelKey]
     : config[key];
 }
 
